@@ -1,4 +1,6 @@
 var express = require('express');
+var http = require('http');
+var socketIo = require('socket.io');
 var path = require('path');
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
@@ -27,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Add session support
 app.use(session({
-  secret: '...', // CHANGE THIS!!!
+  secret: 'jnfrejqvjqiodnfiwqio', // CHANGE THIS!!!
   store: new FileStore(),
   saveUninitialized: true,
   resave: false
@@ -44,15 +46,15 @@ app.use(multer({
 // Setup MySQL
 
 // Database configuration
-var dbOptions = {
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'sss-final'
-};
+// var dbOptions = {
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'sss-final'
+// };
 
 // Add connection middleware
-app.use(myConnection(mysql, dbOptions, 'single'));
+// app.use(myConnection(mysql, dbOptions, 'single'));
 
 //  ===========
 //  = Routers =
