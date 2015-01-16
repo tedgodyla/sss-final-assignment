@@ -46,15 +46,15 @@ app.use(multer({
 // Setup MySQL
 
 // Database configuration
-// var dbOptions = {
-//   host: 'localhost',
-//   user: 'root',
-//   password: '',
-//   database: 'sss-final'
-// };
+var dbOptions = {
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'sss-final'
+};
 
 // Add connection middleware
-// app.use(myConnection(mysql, dbOptions, 'single'));
+app.use(myConnection(mysql, dbOptions, 'single'));
 
 //  ===========
 //  = Routers =
