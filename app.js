@@ -29,10 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Add session support
 app.use(session({
-  secret: 'jnfrejqvjqiodnfiwqio', // CHANGE THIS!!!
-  store: new FileStore(),
-  saveUninitialized: true,
-  resave: false
+	secret: 'jnfrejqvjqiodnfiwqio', // CHANGE THIS!!!
+	store: new FileStore(),
+	saveUninitialized: true,
+	resave: false
 }));
 
 // Setup bodyparser
@@ -40,17 +40,17 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Setup Multer
 app.use(multer({
-  dest: './uploads/'
+	dest: './uploads/'
 }));
 
 // Setup MySQL
 
 // Database configuration
 var dbOptions = {
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'sss-final'
+	host: 'localhost',
+	user: 'root',
+	password: '',
+	database: 'notejs'
 };
 
 // Add connection middleware
@@ -59,14 +59,18 @@ app.use(myConnection(mysql, dbOptions, 'single'));
 //  ===========
 //  = Routers =
 //  ===========
-var testRouter = require('./routers/test');
+var usersRouter = require('./routers/users');
+var clubsRouter = require('./routers/clubs');
 
-
-app.use('/test', testRouter);
+app.use('/users', usersRouter);
+app.use('/clubs', clubsRouter);
 
 // This should be the ONLY route in this file!
 app.get('/', function(req, res){
-  res.redirect('/test');
+  	// res.redirect('/users');
+  	res.render('index', {
+		baseUrl: req.baseUrl
+	});
 });
 
 //  =================
@@ -74,5 +78,5 @@ app.get('/', function(req, res){
 //  =================
 
 app.listen(3000, function(){
-  console.log('App listening at http://localhost:3000');
+	console.log('App listening at http://localhost:3000');
 });
