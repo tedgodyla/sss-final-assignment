@@ -1,26 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <meta name="description" content="">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,600,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/stylesheets/reset.css">
     <link rel="stylesheet" href="/stylesheets/main.css">
+    <title>Eredivisie Dreamteam</title>
   </head>
   <body>
-    <div class="container">
-    	<ul>
-        <li><a href="/">Home</a></li>
-		  	<li><a href="/clubs">Clubs</a></li>
-        <% if (userid) { %>
-          <li><span><%= username %></span>
-            <ul>
-              <li><a href="/users/teams">Mijn teams</a></li>
-              <li><a href="/users/logout">Uitloggen</a></li>
-            </ul>
-          </li>
-        <% } else { %>
-          <li><a href="/users/login">Inloggen</a></li>
-          <li><a href="/users/signup">Registreren</a></li>
-        <% }%>
-		</ul>
+    <header>
+      <nav class="ctn">
+      	<ul class="left-menu">
+          <li><a href="/">Home</a></li>
+  		  	<li><a href="/clubs">Clubs</a></li>
+    		</ul>
+
+        <ul class="right-menu">
+          <% if (userid) { %>
+            <li><span><%= username %></span>
+              <ul>
+                <li><a href="/users/teams">Mijn teams</a></li>
+                <li><a href="/users/logout">Uitloggen</a></li>
+              </ul>
+            </li>
+          <% } else { %>
+            <li><a href="/users/login">Inloggen</a></li>
+            <li><a href="/users/signup">Registreren</a></li>
+          <% }%>
+        </ul>
+        <div class="clear"></div>
+      </nav>
+    </header>
+    <section class="content ctn">
