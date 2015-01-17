@@ -16,7 +16,7 @@ router.get("/", function (req, res) {
 // UITLOGGEN
 router.get("/logout", function(req, res){
 	req.session.destroy();
-	res.redirect(req.baseUrl);
+	res.redirect('/');
 });
 
 // INLOGGEN GET
