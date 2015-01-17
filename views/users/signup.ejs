@@ -1,0 +1,23 @@
+<% include ../layouts/header %>
+
+<h1>Registreren</h1>
+
+<% include ../layouts/message %>
+
+<form action="<%= baseUrl + "/signup" %>" method="post">
+  <label for="field_username">Username: </label>
+  <input type="text" id="field_username" name="username" value="">
+
+  <label for="field_email">Email: </label>
+  <input type="email" id="field_email" name="email" value="">
+
+  <label for="field_password_1">Password: </label>
+  <input type="password" id="field_password_1" name="password1" value="">
+
+  <label for="field_password_2">Password: </label>
+  <input type="password" id="field_password_2" name="password2" value="">
+
+  <button type="submit">Registreren</button>
+</form>
+
+<% include ../layouts/footer %>

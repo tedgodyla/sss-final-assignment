@@ -9,3 +9,18 @@
   </head>
   <body>
     <div class="container">
+    	<ul>
+			<li><a href="/users">Gebruikers</a></li>
+		  	<li><a href="/clubs">Clubs</a></li>
+        <% if (userid) { %>
+          <li><span><%= username %></span>
+            <ul>
+              <li><a href="/users/teams">Mijn teams</a></li>
+              <li><a href="/users/logout">Uitloggen</a></li>
+            </ul>
+          </li>
+        <% } else { %>
+          <li><a href="/users/login">Inloggen</a></li>
+          <li><a href="/users/signup">Registreren</a></li>
+        <% }%>
+		</ul>

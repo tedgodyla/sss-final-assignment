@@ -56,22 +56,35 @@ var dbOptions = {
 // Add connection middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
 
+// get session
+app.use(function(req, res, next) {
+	res.locals.userid = null
+	res.locals.username = null
+
+	if (req.session){
+		res.locals.userid = req.session.userid
+		res.locals.username = req.session.username
+	}
+	next();
+});
+
 //  ===========
 //  = Routers =
 //  ===========
 var usersRouter = require('./routers/users');
 var clubsRouter = require('./routers/clubs');
+var homeRouter = require('./routers/home');
 
 app.use('/users', usersRouter);
 app.use('/clubs', clubsRouter);
+app.use('/', homeRouter);
 
 // This should be the ONLY route in this file!
-app.get('/', function(req, res){
-  	// res.redirect('/users');
-  	res.render('index', {
-		baseUrl: req.baseUrl
-	});
-});
+// app.get('/', function(req, res){
+//   	res.render('index', {
+// 		baseUrl: req.baseUrl,
+// 	});
+// });
 
 //  =================
 //  = Start the app =

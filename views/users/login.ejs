@@ -1,0 +1,19 @@
+<% include ../layouts/header %>
+
+<h1>Login</h1>
+
+<% include ../layouts/message %>
+
+<form action="<%= baseUrl + "/login" %>" method="post">
+  <label for="field_username">Username: </label>
+  <input type="text" id="field_username" name="username" value="">
+
+  <label for="field_password">Password: </label>
+  <input type="text" id="field_password" name="password" value="">
+
+  <button type="submit">Login!</button>
+</form>
+
+<a href="<%= baseUrl %>/signup">Registreren</a>
+
+<% include ../layouts/footer %>
