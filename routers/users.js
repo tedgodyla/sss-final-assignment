@@ -118,4 +118,120 @@ router.post("/signup", function(req, res){
   	}
 });
 
+// TEAM OVERZICHT
+router.get("/teams", function(req, res){
+	if (req.session.userid) { 
+		req.getConnection(function(err, connection){
+    		if(err){ return next(err); }
+    		var query = 'SELECT team.id, team.name, formation.name AS formation FROM team ';
+    			query+= 'LEFT JOIN formation ON formation.id = team.formations_id  ';
+    			query+= 'WHERE user_id = "' + req.session.userid + '" ORDER BY created_at DESC';
+	  		connection.query(query, function(err, teams){
+	      		if(err){ return next(err); }
+	      		var data = {
+	      			baseUrl: req.baseUrl,
+	      			teams: teams
+	      		}
+	      		res.render("users/teams", data);
+	    	});
+	  	});
+  	} else {
+    	res.redirect(req.baseUrl + "/login");
+  	}
+});
+
+// TEAM AANMAKEN GET
+router.get("/teams/new", function(req, res){
+	if (req.session.userid) { 
+		req.getConnection(function(err, connection){
+    		if(err){ return next(err); }
+    		var query = 'SELECT id,name FROM player';
+	  		connection.query(query, function(err, players){
+	      		if(err){ return next(err); }
+	      		var data = {
+	      			baseUrl: req.baseUrl,
+	      			players: players
+	      		}
+	      		res.render("users/new_team", data);
+	    	});
+	  	});
+  	} else {
+    	res.redirect(req.baseUrl + "/login");
+  	}
+});
+
+// TEAM AANMAKEN POST
+router.post("/teams/new", function(req, res){
+	var error = false;
+  	var data = { 
+  		baseUrl: req.baseUrl, 
+  		message: '',
+  		invoer: req.body
+  	};
+
+  	var arr = [];
+
+  	for (var key in data) {
+   		var obj = data[key];
+		for (var prop in obj) {
+	    	if (obj.hasOwnProperty(prop)){
+    			//console.log(prop + " = " + obj[prop]);
+    			if (!obj[prop]){
+    				error = true;
+    			} else {
+    				if (prop.charAt(0) === 'p'){
+    					for (var i = 0; i < arr.length; i++){
+    						if (arr[i] === obj[prop]){
+    							error = true;
+    						}
+    					}
+    					arr.push(obj[prop]);
+    				}
+    			}
+  			}
+		}
+	}
+
+	console.log(arr);
+
+	if (!error){
+		req.getConnection(function(err, connection){
+    		if(err){ return next(err); }
+			var query = 'INSERT INTO team (name, user_id, formations_id)';
+				query+= ' VALUES (';
+				query+=	'"' + data.invoer.titel + '",';
+				query+=	req.session.userid + ','; 
+				query+=	req.body.formatie;
+				query+= ');';
+			
+	  		connection.query(query, function(err, user){
+	      		if(err){ return next(err); }
+	      		var query = 'SELECT MAX(id) AS id FROM team';
+		  		connection.query(query, function(err, team){
+		      		if(err){ return next(err); }
+		      		var query = 'INSERT INTO team_has_player (team_id, player_id) ';
+						query+= 'VALUES ('+team[0].id+','+req.body.p1+'), ';
+						query+= '('+team[0].id+','+req.body.p2+'), ';
+						query+= '('+team[0].id+','+req.body.p3+'), ';
+						query+= '('+team[0].id+','+req.body.p4+'), ';
+						query+= '('+team[0].id+','+req.body.p5+'), ';
+						query+= '('+team[0].id+','+req.body.p6+'), ';
+						query+= '('+team[0].id+','+req.body.p7+'), ';
+						query+= '('+team[0].id+','+req.body.p8+'), ';
+						query+= '('+team[0].id+','+req.body.p9+'), ';
+						query+= '('+team[0].id+','+req.body.p10+'), ';
+						query+= '('+team[0].id+','+req.body.p11+');';
+					console.log(query);
+		      		connection.query(query, function(err, bla){
+		      			if(err){ return next(err); }
+		      			res.redirect('/users/teams');
+		      		});
+		    	});
+	    	});
+	  	});
+	} else {
+		res.send('vul alle velden in');
+	}
+});
+
 module.exports = router;

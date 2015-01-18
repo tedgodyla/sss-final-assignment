@@ -5,7 +5,8 @@ router.get('/', function(req, res, next){
   	req.getConnection(function(err, connection){
     	if(err){ return next(err); }
 
-    	connection.query('SELECT * FROM club', function(err, clubs){
+      var query = 'SELECT * FROM club';
+    	connection.query(query, function(err, clubs){
       		if(err){ return next(err); }
       		res.render('clubs/index', {
       			baseUrl: req.baseUrl,
@@ -21,7 +22,8 @@ router.get("/:id", function (req, res) {
 	req.getConnection(function(err, connection){
     	if(err){ return next(err); }
 
-    	connection.query('SELECT * FROM player WHERE club_id = ' + index, function(err, players){
+      var query = 'SELECT * FROM player WHERE club_id = ' + index;
+    	connection.query(query, function(err, players){
       		if(err){ return next(err); }
       		res.render('clubs/players', {players: players});
     	});

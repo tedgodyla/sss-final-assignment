@@ -2,8 +2,7 @@
 /* ---------- MAIN ---------- */
 /* ------------------------------*/
 
-html,
-body {
+html {
 	height: 100%;
 	width: 100%;
 }
@@ -34,14 +33,27 @@ h6 { font-size: 0.8em; }
 p { 
 	font-size: 1em;
 	max-width: 36em;
+	margin: 1em 0em;
 }
 
+a.btn {
+	display: inline-block;
+	background: #777;
+	color: #fff;
+	padding: 0.9em 1em;
+	border-radius: 0.2em;
+	text-decoration: none;
+}
+
+a.btn:hover {
+	background: #555;
+}
 
 /* ------------------------------*/
 /* ---------- HEADER ---------- */
 /* ------------------------------*/
 
-header {
+body > header {
 	position: fixed;
 	top: 0px; left: 0px;
 	height: 4em;
@@ -97,10 +109,12 @@ nav > ul > li > span:hover {
 
 nav > ul > li > ul {
 	position: absolute;
+	z-index: 9;
 	display: none;
 	top: 90%; left: 0px;
 	background: #fff;
 	box-shadow: rgba(0,0,0,0.2) 0px 0px 6px;
+	min-width: 110%;
 }
 
 nav > ul.right-menu > li:last-child > ul {
@@ -137,6 +151,142 @@ nav > ul > li > ul > li > a:hover {
 	padding: 0 1em;
 }
 
+/* ------------------------------*/
+/* ---------- CLUBS ---------- */
+/* ------------------------------*/
+
+.list {
+	margin: 1.6em 0em 0.8em;
+	background: #fff;
+	border: solid 1px;
+	border-color: #e4e4e4 #dfdfdf #cfcfcf;
+	border-radius: 3px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.list article a {
+	display: block;
+	text-decoration: none; 
+	background: #fff;
+	color: #333;
+}
+
+.list article a:hover {
+	background: #dfdfdf;
+}
+
+.list article:last-of-type a {
+}
+
+.list article a header,
+.list article a section {
+	float: left;
+	padding: 1em 1.5em;
+}
+
+.list article a header {
+	width: 10em;
+}
+
+/* ------------------------------*/
+/* ---------- FORMS ---------- */
+/* ------------------------------*/
+
+.inputCnt {
+	position: relative;
+}
+
+input {
+	display: block;
+	font-size: 1em;
+	padding: 0.3em 0.6em;
+}
+
+
+#playerDropdown {
+	position: absolute;
+	display: none;
+	top: 1.4em; left: 0em;
+	z-index: 1;
+	max-height: 10.8em;
+	width: 16em;
+	overflow: hidden;
+	border: #ccc solid 1px;
+}
+
+#playerDropdown li {
+	background: #fff;
+	padding: 0.8em 1em;
+}
+
+#playerDropdown li:hover {
+	background: #ddd;
+}
+
+#field {
+	position: relative;
+	width: 100%;
+	height: 26em;
+	background: lime;
+	margin-bottom: 5em;
+}
+
+#field .p1, #field .p2, #field .p3, #field .p4, #field .p5, #field .p6, #field .p7,
+#field .p8, #field .p9, #field .p10, #field .p11 {
+	position: absolute;
+}
+
+#field .inputCnt input {
+	border: #0d0 solid 1px;
+	width: 12em;
+	box-sizing: border-box;
+}
+
+/* FORMATIE 4-3-3 */
+.f4-3-3 .p1 {bottom:2.5em;left:23em;}
+.f4-3-3 .p2 {bottom:8em;left:2em;}
+.f4-3-3 .p3 {bottom:6em;left:16em;}
+.f4-3-3 .p4 {bottom:6em;left:30em;}
+.f4-3-3 .p5 {bottom:8em;left:44em;}
+
+.f4-3-3 .p6 {bottom:14em;left:5em;}
+.f4-3-3 .p7 {bottom:12em;left:23em;}
+.f4-3-3 .p8 {bottom:14em;left:41em;}
+
+.f4-3-3 .p9 {bottom:21em;left:5em;}
+.f4-3-3 .p10 {bottom:19em;left:23em;}
+.f4-3-3 .p11 {bottom:21em;left:41em;}
+
+/* FORMATIE 4-4-2 */
+.f4-4-2 .p1 {bottom:2.5em;left:23em;}
+.f4-4-2 .p2 {bottom:8em;left:2em;}
+.f4-4-2 .p3 {bottom:6em;left:16em;}
+.f4-4-2 .p4 {bottom:6em;left:30em;}
+.f4-4-2 .p5 {bottom:8em;left:44em;}
+
+.f4-4-2 .p6 {bottom:14em;left:5em;}
+.f4-4-2 .p7 {bottom:12em;left:23em;}
+.f4-4-2 .p8 {bottom:16em;left:23em;}
+.f4-4-2 .p9 {bottom:14em;left:41em;}
+
+.f4-4-2 .p10 {bottom:21em;left:14em;}
+.f4-4-2 .p11 {bottom:21em;left:32em;}
+
+/* FORMATIE 5-3-2 */
+.f5-3-2 .p1 {bottom:2.5em;left:23em;}
+.f5-3-2 .p2 {bottom:9em;left:2em;}
+.f5-3-2 .p3 {bottom:6em;left:9em;}
+.f5-3-2 .p4 {bottom:6em;left:23em;}
+.f5-3-2 .p5 {bottom:6em;left:37em;}
+.f5-3-2 .p6 {bottom:9em;left:44em;}
+
+.f5-3-2 .p7 {bottom:15em;left:7em;}
+.f5-3-2 .p8 {bottom:12em;left:23em;}
+.f5-3-2 .p9 {bottom:15em;left:39em;}
+
+.f5-3-2 .p10 {bottom:20em;left:14em;}
+.f5-3-2 .p11 {bottom:20em;left:32em;}
 /* ------------------------------*/
 /* ---------- OTHER STYLES ---------- */
 /* ------------------------------*/

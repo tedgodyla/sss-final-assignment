@@ -1,0 +1,79 @@
+<% include ../layouts/header %>
+
+<h1>Team aanmaken</h1>
+
+<section class="right">
+	<form action="<%= baseUrl + "/teams/new" %>" method="post">
+		<label for="titel">Teamnaam</label>
+		<input id="titel" type="text" name="titel" />
+		<label for="formatie">Formatie</label>
+		<select id="formatie" name="formatie">
+			<option value="1">4-3-3</option>
+			<option value="2">5-3-2</option>
+			<option value="3">4-4-2</option>
+		</select><br/>
+	  	<input id="pp1" type="hidden" name="p1" value="1">
+	  	<input id="pp2" type="hidden" name="p2" value="2">
+	  	<input id="pp3" type="hidden" name="p3" value="3">
+	  	<input id="pp4" type="hidden" name="p4" value="4">
+	  	<input id="pp5" type="hidden" name="p5" value="5">
+	  	<input id="pp6" type="hidden" name="p6" value="6">
+	  	<input id="pp7" type="hidden" name="p7" value="7">
+	  	<input id="pp8" type="hidden" name="p8" value="8">
+	  	<input id="pp9" type="hidden" name="p9" value="9">
+	  	<input id="pp10" type="hidden" name="p10" value="10">
+	  	<input id="pp11" type="hidden" name="p11" value="11">
+	  	<button type="submit">Opslaan</button>
+	</form>
+</section>
+<section class="left">
+	<section id="field" class="f4-3-3">
+		<section class="inputCnt p1">
+			<input id="p1" class="playerInput" type="text" />
+		</section>
+		<section class="inputCnt p2">
+			<input id="p2" class="playerInput" type="text" />
+		</section>
+		<section class="inputCnt p3">
+			<input id="p3" class="playerInput" type="text" />
+		</section>
+		<section class="inputCnt p4">
+			<input id="p4" class="playerInput" type="text" />
+		</section>
+		<section class="inputCnt p5">
+			<input id="p5" class="playerInput" type="text" />
+		</section>
+		<section class="inputCnt p6">
+			<input id="p6" class="playerInput" type="text" />
+		</section>
+		<section class="inputCnt p7">
+			<input id="p7" class="playerInput" type="text" />
+		</section>
+		<section class="inputCnt p8">
+			<input id="p8" class="playerInput" type="text" />
+		</section>
+		<section class="inputCnt p9">
+			<input id="p9" class="playerInput" type="text" />
+		</section>
+		<section class="inputCnt p10">
+			<input id="p10" class="playerInput" type="text" />
+		</section>
+		<section class="inputCnt p11">
+			<input id="p11" class="playerInput" type="text" />
+		</section>
+	</section>
+</section>
+
+<% if (players.length > 0){ %>
+	<section id="playerDropdown">
+		<ul class="player">
+		  	<% players.forEach(function(value, index){ %>
+			    <li id="<%= value.id %>"><%= value.name %></li>
+	   		<% }); %>
+   		</ul>
+   	</section>
+<% } else { %>
+	<p>Je hebt nog geen team. Maak er eerst 1 aan.</p>
+<% } %>
+
+<% include ../layouts/footer %>

@@ -10,20 +10,30 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,600,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/stylesheets/reset.css">
     <link rel="stylesheet" href="/stylesheets/main.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascript/main.js"></script>
     <title>Eredivisie Dreamteam</title>
   </head>
   <body>
     <header>
       <nav class="ctn">
       	<ul class="left-menu">
-          <li><a href="/">Home</a></li>
-  		  	<li><a href="/clubs">Clubs</a></li>
+          <li><a href="/">home</a></li>
+          <li><span>teams</span>
+            <ul>
+              <li><a href="/teams/hot">Populair</a></li>
+              <li><a href="/teams/new">Nieuw</a></li>
+              <li><a href="/teams/all">Alle</a></li>
+            </ul>
+          </li>
+  		  	<li><a href="/clubs">clubs</a></li>
     		</ul>
 
         <ul class="right-menu">
           <% if (userid) { %>
             <li><span><%= username %></span>
               <ul>
+                <li><a href="/users/">Dashboard</a></li>
                 <li><a href="/users/teams">Mijn teams</a></li>
                 <li><a href="/users/logout">Uitloggen</a></li>
               </ul>

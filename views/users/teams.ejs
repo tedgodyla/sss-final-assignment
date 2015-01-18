@@ -1,0 +1,24 @@
+<% include ../layouts/header %>
+
+<h1>Mijn Teams</h1>
+
+<% if (teams.length > 0){ %>
+	<section class="list teams">
+	  	<% teams.forEach(function(value, index){ %>
+		    <article>
+		    	<a href="<%= baseUrl %>/teams/<%= value.id %>">
+		    		<header><%= value.name %></header>
+		    		<section><%= value.formation %></section>
+		    		<div class="clear"></div>
+		    	</a>
+		    </article>
+   		<% }); %>
+   	</section>
+<% } else { %>
+	<p>Je hebt nog geen team. Maak er eerst 1 aan.</p>
+<% } %>
+
+
+<a class="btn" href="/users/teams/new">Maak een team aan</a>
+
+<% include ../layouts/footer %>

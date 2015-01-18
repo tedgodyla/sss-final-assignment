@@ -15,6 +15,8 @@ var myConnection = require('express-myconnection');
 
 // The app itself
 var app = express();
+var server = http.Server(app);
+var io = socketIo(server);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -90,6 +92,24 @@ app.use('/', homeRouter);
 //  = Start the app =
 //  =================
 
-app.listen(3000, function(){
+server.listen(3000, function(){
 	console.log('App listening at http://localhost:3000');
 });
+
+//  =================
+//  = IO dingen =
+//  =================
+
+io.on("connection", function(socket){
+  // New connection!
+  socket.emit("welcome", "Hello!");
+
+  socket.on("message", function(data){
+    console.log("Message received:", data);
+    io.emit("message", data)
+  });
+
+  socket.on("disconnect", function(){
+    console.log("Disconnect")
+  })
+})
