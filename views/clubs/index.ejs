@@ -5,15 +5,20 @@
 <p>Een lijst met alle beschikbare clubs</p>
 
 <section class="list clubs">
-  <% clubs.forEach(function(value, index){ %>
-    <article>
-    	<a href="<%= baseUrl %>/<%= value.id %>">
-    		<header><%= value.name %></header>
-    		<section><%= value.description %></section>
-    		<div class="clear"></div>
-    	</a>
+	<article>
+		<header>Naam</header>
+		<section>Plaats</section>
+		<div class="clear"></div>
     </article>
-   <% }); %>
+	<% clubs.forEach(function(value, index){ %>
+	    <article>
+	    	<a href="<%= baseUrl %>/<%= value.id %>">
+	    		<header><%= value.name %></header>
+	    		<section><%= value.description %></section>
+	    		<div class="clear"></div>
+	    	</a>
+	    </article>
+	<% }); %>
 </section>
 
 <% include ../layouts/footer %>

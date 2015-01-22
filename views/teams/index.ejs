@@ -1,0 +1,28 @@
+<% include ../layouts/header %>
+
+<h1><%= title %></h1>
+
+<% if (teams.length > 0){ %>
+	<section class="list teams">
+		<article>
+    		<header>Naam</header>
+    		<section class="formatie">Formatie</section>
+    		<section class="comments">Aantal comments</section>
+    		<div class="clear"></div>
+	    </article>
+	  	<% teams.forEach(function(value, index){ %>
+		    <article>
+		    	<a href="<%= baseUrl %>/<%= value.id %>">
+		    		<header><%= value.name %></header>
+		    		<section class="formatie"><%= value.formation %></section>
+		    		<section class="comments">0</section>
+		    		<div class="clear"></div>
+		    	</a>
+		    </article>
+   		<% }); %>
+   	</section>
+<% } else { %>
+	<p>Er bestaat nog geen team. Log in en maak de eerste aan!</p>
+<% } %>
+
+<% include ../layouts/footer %>

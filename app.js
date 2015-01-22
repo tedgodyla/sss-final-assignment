@@ -76,9 +76,11 @@ app.use(function(req, res, next) {
 var usersRouter = require('./routers/users');
 var clubsRouter = require('./routers/clubs');
 var homeRouter = require('./routers/home');
+var teamsRouter = require('./routers/teams');
 
 app.use('/users', usersRouter);
 app.use('/clubs', clubsRouter);
+app.use('/teams', teamsRouter);
 app.use('/', homeRouter);
 
 // This should be the ONLY route in this file!

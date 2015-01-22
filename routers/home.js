@@ -10,22 +10,27 @@ router.get('/', function(req, res){
     		nieuw: 0
     	}
 
-    	// query moet nog veranderd worden
-    	connection.query('SELECT * FROM team ', function(err, teams){
+    	var query = 'SELECT team.id, team.name, formation.name AS formation FROM team ';
+      query+= 'LEFT JOIN formation ON formation.id = team.formations_id ';
+      query+= 'ORDER BY created_at DESC LIMIT 0,4';
+    	connection.query(query, function(err, teams){
       		if(err){ return next(err); }
       		opstelling.populair = teams;
-    	});
 
-    	connection.query('SELECT * FROM team ORDER BY created_at DESC', function(err, teams){
-      		if(err){ return next(err); }
-      		opstelling.nieuw = teams;
-    	});
+          var query = 'SELECT team.id, team.name, formation.name AS formation FROM team ';
+          query+= 'LEFT JOIN formation ON formation.id = team.formations_id ';
+          query+= 'ORDER BY created_at DESC LIMIT 0,4';
+          connection.query(query, function(err, teams){
+              if(err){ return next(err); }
+              opstelling.nieuw = teams;
 
-    	res.render('index', {
-			baseUrl: req.baseUrl,
-			populair: opstelling.populair,
-			nieuw: opstelling.nieuw
-		});
+              res.render('index', {
+                baseUrl: req.baseUrl,
+                populair: opstelling.populair,
+                nieuw: opstelling.nieuw
+              });
+          });
+    	});
   	});
 });
 

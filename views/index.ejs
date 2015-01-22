@@ -2,17 +2,55 @@
 
 <h1>Eredivisie Dreamteams</h1>
 <h2>Populaire opstellingen</h2>
-<% if (populair.length > 0){  %>
-	<a href="<%= baseUrl %>/teams">Bekijk alle opstellingen</a>
+
+<% if (populair.length > 0){ %>
+	<section class="list teams">
+		<article>
+    		<header>Naam</header>
+    		<section class="formatie">Formatie</section>
+    		<section class="comments">Aantal comments</section>
+    		<div class="clear"></div>
+	    </article>
+	  	<% populair.forEach(function(value, index){ %>
+		    <article>
+		    	<a href="<%= baseUrl %>/teams/<%= value.id %>">
+		    		<header><%= value.name %></header>
+		    		<section class="formatie"><%= value.formation %></section>
+		    		<section class="comments">0</section>
+		    		<div class="clear"></div>
+		    	</a>
+		    </article>
+   		<% }); %>
+   	</section>
+   	<a class="btn" href="<%= baseUrl %>/teams/hot">Bekijk meer populaire opstellingen</a>
 <% } else { %>
-	<p>Er zijn nog geen teams aangemaakt</p>
+	<p>Er bestaat nog geen team. Log in en maak de eerste aan!</p>
 <% } %>
 
 <h2>Nieuwste opstellingen</h2>
-<% if (nieuw.length > 0){  %>
-	<a href="<%= baseUrl %>/teams">Bekijk alle opstellingen</a>
+
+<% if (nieuw.length > 0){ %>
+	<section class="list teams">
+		<article>
+    		<header>Naam</header>
+    		<section class="formatie">Formatie</section>
+    		<section class="comments">Aantal comments</section>
+    		<div class="clear"></div>
+	    </article>
+	  	<% nieuw.forEach(function(value, index){ %>
+		    <article>
+		    	<a href="<%= baseUrl %>/teams/<%= value.id %>">
+		    		<header><%= value.name %></header>
+		    		<section class="formatie"><%= value.formation %></section>
+		    		<section class="comments">0</section>
+		    		<div class="clear"></div>
+		    	</a>
+		    </article>
+   		<% }); %>
+   	</section>
+   	<a class="btn" href="<%= baseUrl %>/teams/new">Bekijk meer nieuwe opstellingen</a>
 <% } else { %>
-	<p>Er zijn nog geen teams aangemaakt</p>
+	<p>Er bestaat nog geen team. Log in en maak de eerste aan!</p>
 <% } %>
 
 <% include layouts/footer %>
