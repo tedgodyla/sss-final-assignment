@@ -38,7 +38,7 @@ CREATE TABLE `club` (
 
 LOCK TABLES `club` WRITE;
 /*!40000 ALTER TABLE `club` DISABLE KEYS */;
-INSERT INTO `club` VALUES (1,'Ajax','test'),(2,'Feyenoord','test'),(3,'PSV','test');
+INSERT INTO `club` VALUES (1,'Ajax','Amsterdam'),(2,'Feyenoord','Rotterdam'),(3,'PSV','Eindhoven');
 /*!40000 ALTER TABLE `club` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,6 +159,7 @@ DROP TABLE IF EXISTS `team`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `team` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
   `user_id` int(11) NOT NULL,
   `formations_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -167,7 +168,7 @@ CREATE TABLE `team` (
   KEY `fk_dream_formation_formations1_idx` (`formations_id`),
   CONSTRAINT `fk_dream_formation_formations1` FOREIGN KEY (`formations_id`) REFERENCES `formation` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_dream_formation_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +177,36 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
+INSERT INTO `team` VALUES (1,'test',1,1,'2015-01-18 00:48:02'),(2,'test2',1,1,'2015-01-18 00:48:53'),(3,'test3',1,1,'2015-01-18 00:49:10'),(4,'test3',1,1,'2015-01-18 00:51:10'),(5,'test4',1,1,'2015-01-18 00:54:38'),(6,'test6',1,1,'2015-01-18 01:03:55'),(7,'fdafdsfds',1,1,'2015-01-18 01:04:58'),(8,'superteam',1,2,'2015-01-18 01:06:48'),(9,'Quen\'s team yo',11,2,'2015-01-20 16:34:34');
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `team_has_player`
+--
+
+DROP TABLE IF EXISTS `team_has_player`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `team_has_player` (
+  `team_id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  PRIMARY KEY (`team_id`,`player_id`),
+  KEY `fk_dream_formation_has_player_player1_idx` (`player_id`),
+  KEY `fk_dream_formation_has_player_dream_formation1_idx` (`team_id`),
+  CONSTRAINT `fk_dream_formation_has_player_dream_formation1` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_dream_formation_has_player_player1` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `team_has_player`
+--
+
+LOCK TABLES `team_has_player` WRITE;
+/*!40000 ALTER TABLE `team_has_player` DISABLE KEYS */;
+INSERT INTO `team_has_player` VALUES (5,1),(6,1),(7,1),(8,1),(9,1),(5,2),(6,2),(7,2),(8,2),(5,3),(6,3),(7,3),(9,3),(5,4),(6,4),(7,4),(8,4),(9,4),(5,5),(6,5),(7,5),(8,5),(9,5),(5,6),(6,6),(7,6),(9,6),(5,7),(6,7),(7,7),(8,7),(9,7),(5,8),(6,8),(7,8),(8,8),(5,9),(6,9),(7,9),(8,9),(9,9),(5,10),(6,10),(7,10),(9,10),(5,11),(6,11),(7,11),(8,12),(9,12),(9,13),(8,14),(9,14),(8,17),(8,18);
+/*!40000 ALTER TABLE `team_has_player` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -192,7 +222,7 @@ CREATE TABLE `user` (
   `password` varchar(45) NOT NULL,
   `email` varchar(80) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +231,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'ted','test','ted@test.nl'),(2,'bart','test','bart@test.nl'),(9,'test7','test','test7@test.nl'),(10,'test','test','test@test.nl');
+INSERT INTO `user` VALUES (1,'ted','test','ted@test.nl'),(2,'bart','test','bart@test.nl'),(9,'test7','test','test7@test.nl'),(10,'test','test','test@test.nl'),(11,'quen','test','quen@test.nl'),(12,'bartski','test','bartski@test.nl');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -214,4 +244,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-17 16:08:30
+-- Dump completed on 2015-01-22 14:37:21
