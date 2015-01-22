@@ -43,6 +43,7 @@ a.btn {
 	padding: 0.9em 1em;
 	border-radius: 0.2em;
 	text-decoration: none;
+	margin: 0 0 1.5em;
 }
 
 a.btn:hover {
@@ -165,28 +166,45 @@ nav > ul > li > ul > li > a:hover {
 	overflow: hidden;
 }
 
-.list article a {
+.list > article > a {
 	display: block;
 	text-decoration: none; 
 	background: #fff;
 	color: #333;
 }
 
-.list article a:hover {
+.list > article > a:hover {
 	background: #dfdfdf;
 }
 
-.list article:last-of-type a {
+.list > article:last-of-type a {
 }
 
-.list article a header,
-.list article a section {
+.list > article > a > header,
+.list > article > a > section,
+.list > article > header,
+.list > article > section {
 	float: left;
 	padding: 1em 1.5em;
 }
 
-.list article a header {
+.list > article > a > header,
+.list > article > header {
 	width: 10em;
+}
+
+.list > article > section > a {
+	margin-right: 1.5em;
+	text-decoration: none;
+}
+
+.list section.formatie {
+	width: 6em;
+}
+
+.list > article:first-child,
+.list > a > article:first-child {
+	font-weight: 600;
 }
 
 /* ------------------------------*/
