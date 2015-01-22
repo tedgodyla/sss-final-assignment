@@ -17,6 +17,7 @@ router.get('/', function(req, res, next){
 });
 
 router.get("/:id", function (req, res) {
+  console.log(req);
 	var index = parseInt(req.params.id, 10);
 
 	req.getConnection(function(err, connection){
