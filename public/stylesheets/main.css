@@ -382,14 +382,16 @@ button:hover {
 	margin-bottom: 0em;
 }
 
-#field .inputCnt section:not[#playerDropdown] {
+#field .inputCnt section:not(#playerDropdown) {
 	display: block;
 	font-size: 1em;
 	padding: 0.3em 0.6em;
-	border: #0d0 solid 1px;
 	width: 12em;
-	background: #fff;
+	color: #fff;
+	background: rgba(0,0,0,.2);
+	margin-bottom: 0em;
 	box-sizing: border-box;
+	border-radius: 3px;
 	text-align: center;
 }
 
