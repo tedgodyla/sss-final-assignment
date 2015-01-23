@@ -13,10 +13,10 @@
 	    </article>
 	  	<% populair.forEach(function(value, index){ %>
 		    <article>
-		    	<a href="<%= baseUrl %>/teams/<%= value.id %>">
+		    	<a href="<%= baseUrl %>/<%= value.id %>">
 		    		<header><%= value.name %></header>
 		    		<section class="formatie"><%= value.formation %></section>
-		    		<section class="comments">0</section>
+		    		<section class="comments"><%= value.total_comments %></section>
 		    		<div class="clear"></div>
 		    	</a>
 		    </article>
@@ -39,10 +39,10 @@
 	    </article>
 	  	<% nieuw.forEach(function(value, index){ %>
 		    <article>
-		    	<a href="<%= baseUrl %>/teams/<%= value.id %>">
+		    	<a href="/teams/<%= value.id %>">
 		    		<header><%= value.name %></header>
 		    		<section class="formatie"><%= value.formation %></section>
-		    		<section class="comments">0</section>
+		    		<section class="comments"><%= value.total_comments %></section>
 		    		<div class="clear"></div>
 		    	</a>
 		    </article>

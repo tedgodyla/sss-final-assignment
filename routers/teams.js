@@ -6,7 +6,7 @@ var getQuery = require('../lib/query');
 router.get("/", function(req, res){
 	req.getConnection(function(err, connection){
 		if(err){ return next(err); }
-    var query = getQuery.selectAllTeams;
+    var query = getQuery.selectAllTeams();
 		connection.query(query, function(err, teams){
     		if(err){ return next(err); }
     		var data = {
@@ -22,7 +22,7 @@ router.get("/", function(req, res){
 router.get("/new", function(req, res){
 	req.getConnection(function(err, connection){
 		if(err){ return next(err); }
-		var query = getQuery.selectNewTeams;
+		var query = getQuery.selectNewTeams();
 		connection.query(query, function(err, teams){
     		if(err){ return next(err); }
     		var data = {
@@ -38,7 +38,7 @@ router.get("/new", function(req, res){
 router.get("/hot", function(req, res){
 	req.getConnection(function(err, connection){
 		if(err){ return next(err); }
-		var query = getQuery.selectHotTeams;
+		var query = getQuery.selectHotTeams();
 		connection.query(query, function(err, teams){
     		if(err){ return next(err); }
     		var data = {

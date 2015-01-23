@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var getQuery = require('../lib/query');
 
 router.get('/', function(req, res){
 	req.getConnection(function(err, connection){
@@ -10,16 +11,12 @@ router.get('/', function(req, res){
     		nieuw: 0
     	}
 
-    	var query = 'SELECT team.id, team.name, formation.name AS formation FROM team ';
-      query+= 'LEFT JOIN formation ON formation.id = team.formations_id ';
-      query+= 'ORDER BY created_at DESC LIMIT 0,4';
+    	var query = getQuery.selectHotTeams(3);
     	connection.query(query, function(err, teams){
       		if(err){ return next(err); }
       		opstelling.populair = teams;
 
-          var query = 'SELECT team.id, team.name, formation.name AS formation FROM team ';
-          query+= 'LEFT JOIN formation ON formation.id = team.formations_id ';
-          query+= 'ORDER BY created_at DESC LIMIT 0,4';
+          var query = getQuery.selectNewTeams(3);
           connection.query(query, function(err, teams){
               if(err){ return next(err); }
               opstelling.nieuw = teams;
