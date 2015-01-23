@@ -1,8 +1,34 @@
 <% include ../layouts/header %>
 
 <h1>Dashboard</h1>
-<p>Welkom, <%= username %>. What do you wanna do?</p>
+<p>Welkom, <span class="cap"><%= username %></span>!</p>
 
-<h2>Recente berichten onder jouw opstellingen</h2>
+<h2>Recente reacties onder jouw teams</h2>
+
+<% if (comments[0]) { %>
+<section class="list userComment">
+	<article>
+		<header>Team</header>
+		<section>Reactie</section>
+		<div class="clear"></div>
+    </article>
+	<% comments.forEach(function(value, index){ %>
+	    <article>
+	    	<a href="/teams/<%= value.team_id %>">
+	    		<header><%= value.name %></header>
+	    		<section><%= value.text %></section>
+	    		<div class="clear"></div>
+	    	</a>
+	    </article>
+	<% }); %>
+</section>
+<% } else { %>
+	<p>
+		Er zijn nog geen reacties geplaats onder jouw team.
+	</p>
+	<p>
+		Heb je nog geen team? <a href="<%= baseUrl %>/teams/new">Maak er dan één aan</a>.
+	</p>
+<% } %>
 
 <% include ../layouts/footer %>

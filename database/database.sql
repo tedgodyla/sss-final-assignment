@@ -52,12 +52,13 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `team_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `text` mediumtext NOT NULL,
   PRIMARY KEY (`id`,`team_id`),
-  KEY `fk_comments_team1_idx` (`team_id`),
-  CONSTRAINT `fk_comments_team1` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `fk_comment_team1_idx` (`team_id`),
+  CONSTRAINT `fk_comment_team1` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,6 +67,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (1,9,1,'2015-01-23 14:30:50','Sed luctus tortor non posuere lacinia. Aenean maximus enim pellentesque blandit faucibus. In vitae viverra dui. Praesent ultrices fringilla eros, non vehicula erat auctor quis.'),(2,9,1,'2015-01-23 14:31:09','Aenean nisl mi, sollicitudin et rhoncus non, commodo sit amet felis. Quisque pulvinar hendrerit ipsum, in tristique ligula placerat blandit. Quisque sed justo luctus, elementum lectus sed, viverra est. In dignissim nulla pretium est dignissim, dapibus venenatis dui tempus. Nullam vestibulum, nunc ut gravida pharetra, velit est fermentum lacus, eu pharetra orci libero ut eros.'),(3,8,0,'2015-01-23 14:35:22','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et enim nec nibh condimentum bibendum.'),(4,9,0,'2015-01-23 14:35:59','Haha wauw, sorry hoor, maar waarom zet je Memphis Depay rechts back...'),(5,9,0,'2015-01-23 14:36:40','Phasellus nec blandit nibh. Nullam rutrum neque a lectus tincidunt volutpat. Integer suscipit lorem rhoncus diam facilisis tempor. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed cursus hendrerit finibus. Curabitur lacinia enim in commodo tincidunt. Ut scelerisque lacus leo, non finibus nulla consectetur a. Suspendisse id sem nec turpis lacinia viverra vitae et ante.'),(6,9,0,'2015-01-23 14:41:12','goed team man'),(7,8,1,'2015-01-23 17:27:36','fadsfds'),(8,9,11,'2015-01-23 17:28:02','fasdfds'),(9,11,11,'2015-01-23 17:28:26','Haha, laat me niet lachen'),(10,11,11,'2015-01-23 17:29:49','Nee, grapje, hij is wel oke'),(11,11,2,'2015-01-23 17:38:10','Kan beter. Wissel Vloet met Pasveer.'),(12,7,2,'2015-01-23 17:39:47','Donec commodo sem non volutpat tristique. Phasellus sit amet tellus ut lacus maximus pulvinar ut sit amet orci. Etiam fringilla eros lacus, vitae mattis erat ullamcorper consequat. Quisque accumsan placerat mauris et fringilla. Curabitur vel congue ligula. Cras non commodo turpis, et commodo elit. Morbi aliquam laoreet turpis id tristique. Cras purus massa, luctus quis lobortis sed, hendrerit a est. Sed vulputate nulla eget dolor dignissim aliquet. Curabitur in dolor sit amet turpis elementum congue.');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +91,7 @@ CREATE TABLE `formation` (
 
 LOCK TABLES `formation` WRITE;
 /*!40000 ALTER TABLE `formation` DISABLE KEYS */;
-INSERT INTO `formation` VALUES (1,'4-4-3'),(2,'5-3-2'),(3,'4-4-2');
+INSERT INTO `formation` VALUES (1,'4-3-3'),(2,'5-3-2'),(3,'4-4-2');
 /*!40000 ALTER TABLE `formation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +170,7 @@ CREATE TABLE `team` (
   KEY `fk_dream_formation_formations1_idx` (`formations_id`),
   CONSTRAINT `fk_dream_formation_formations1` FOREIGN KEY (`formations_id`) REFERENCES `formation` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_dream_formation_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +179,7 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
-INSERT INTO `team` VALUES (1,'test',1,1,'2015-01-18 00:48:02'),(2,'test2',1,1,'2015-01-18 00:48:53'),(3,'test3',1,1,'2015-01-18 00:49:10'),(4,'test3',1,1,'2015-01-18 00:51:10'),(5,'test4',1,1,'2015-01-18 00:54:38'),(6,'test6',1,1,'2015-01-18 01:03:55'),(7,'fdafdsfds',1,1,'2015-01-18 01:04:58'),(8,'superteam',1,2,'2015-01-18 01:06:48'),(9,'Quen\'s team yo',11,2,'2015-01-20 16:34:34');
+INSERT INTO `team` VALUES (7,'Zo goed dit team',1,1,'2015-01-18 01:04:58'),(8,'superteam',1,2,'2015-01-18 01:06:48'),(9,'Quen\'s team yo',11,2,'2015-01-20 16:34:34'),(11,'beste team ooit dude',1,3,'2015-01-23 14:48:33'),(13,'Dreamteam Bart',2,1,'2015-01-23 15:19:47'),(14,'Dreamteam Bart 2',2,2,'2015-01-23 15:20:37');
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +193,8 @@ DROP TABLE IF EXISTS `team_has_player`;
 CREATE TABLE `team_has_player` (
   `team_id` int(11) NOT NULL,
   `player_id` int(11) NOT NULL,
-  PRIMARY KEY (`team_id`,`player_id`),
+  `position` int(11) NOT NULL,
+  PRIMARY KEY (`team_id`,`player_id`,`position`),
   KEY `fk_dream_formation_has_player_player1_idx` (`player_id`),
   KEY `fk_dream_formation_has_player_dream_formation1_idx` (`team_id`),
   CONSTRAINT `fk_dream_formation_has_player_dream_formation1` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -205,7 +208,7 @@ CREATE TABLE `team_has_player` (
 
 LOCK TABLES `team_has_player` WRITE;
 /*!40000 ALTER TABLE `team_has_player` DISABLE KEYS */;
-INSERT INTO `team_has_player` VALUES (5,1),(6,1),(7,1),(8,1),(9,1),(5,2),(6,2),(7,2),(8,2),(5,3),(6,3),(7,3),(9,3),(5,4),(6,4),(7,4),(8,4),(9,4),(5,5),(6,5),(7,5),(8,5),(9,5),(5,6),(6,6),(7,6),(9,6),(5,7),(6,7),(7,7),(8,7),(9,7),(5,8),(6,8),(7,8),(8,8),(5,9),(6,9),(7,9),(8,9),(9,9),(5,10),(6,10),(7,10),(9,10),(5,11),(6,11),(7,11),(8,12),(9,12),(9,13),(8,14),(9,14),(8,17),(8,18);
+INSERT INTO `team_has_player` VALUES (7,1,0),(8,1,0),(9,1,0),(11,1,0),(13,1,0),(14,1,0),(7,2,1),(8,2,1),(11,2,5),(13,2,1),(14,2,1),(7,3,2),(9,3,1),(11,3,7),(13,3,2),(14,3,2),(7,4,3),(8,4,2),(9,4,2),(11,4,8),(13,4,3),(14,4,3),(7,5,4),(8,5,3),(9,5,3),(13,5,4),(14,5,4),(7,6,5),(9,6,4),(11,6,3),(13,6,5),(14,6,5),(7,7,6),(8,7,4),(9,7,5),(11,7,9),(13,7,6),(14,7,6),(7,8,7),(8,8,5),(11,8,4),(13,8,7),(14,8,7),(7,9,8),(8,9,6),(9,9,6),(11,9,10),(13,9,8),(14,9,8),(7,10,9),(9,10,8),(11,10,1),(13,10,9),(14,10,9),(7,11,10),(13,11,10),(14,11,10),(8,12,7),(9,12,7),(9,13,10),(8,14,8),(9,14,9),(8,17,9),(11,17,2),(8,18,10),(11,18,6);
 /*!40000 ALTER TABLE `team_has_player` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,7 +234,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'ted','test','ted@test.nl'),(2,'bart','test','bart@test.nl'),(9,'test7','test','test7@test.nl'),(10,'test','test','test@test.nl'),(11,'quen','test','quen@test.nl'),(12,'bartski','test','bartski@test.nl');
+INSERT INTO `user` VALUES (1,'ted','test','ted@test.nl'),(2,'bart','test','bart@test.nl'),(11,'quen','test','quen@test.nl');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -244,4 +247,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-22 14:37:21
+-- Dump completed on 2015-01-23 18:58:36

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var getQuery = require('../lib/query');
 
 // HOOFDMENU GEBRUIKER
 router.get("/", function (req, res) {
@@ -7,9 +8,18 @@ router.get("/", function (req, res) {
     	var data = {
       		baseUrl: req.baseUrl,
     	}
-    	res.render("users/", data);
+    	req.getConnection(function(err, connection){
+    		if(err){ return next(err); }
+    		var userid = req.session.userid;
+    		var query = getQuery.selectCommentsForUser(userid);
+	  		connection.query(query, function(err, comments){
+	      		if(err){ return next(err); }
+	      		data.comments = comments;
+    			res.render("users/", data);
+    	  	});
+	  	});
   	} else {
-    	res.redirect(req.baseUrl + "/login");
+	    res.redirect(req.baseUrl + "/login");
   	}
 });
 
@@ -34,7 +44,7 @@ router.post("/login", function(req, res){
   	if (username && password) {
   		req.getConnection(function(err, connection){
     		if(err){ return next(err); }
-    		var query = 'SELECT id, name FROM user WHERE name = "' + username + '" AND password = "' + password + '"';
+    		var query = getQuery.selectUser(username, password);
 	  		connection.query(query, function(err, user){
 	      		if(err){ return next(err); }
 	      		if (user[0]){
@@ -123,9 +133,8 @@ router.get("/teams", function(req, res){
 	if (req.session.userid) { 
 		req.getConnection(function(err, connection){
     		if(err){ return next(err); }
-    		var query = 'SELECT team.id, team.name, formation.name AS formation FROM team ';
-    			query+= 'LEFT JOIN formation ON formation.id = team.formations_id  ';
-    			query+= 'WHERE user_id = "' + req.session.userid + '" ORDER BY created_at DESC';
+    		var user = req.session.userid;
+    		var query = getQuery.selectUserTeams(user);
 	  		connection.query(query, function(err, teams){
 	      		if(err){ return next(err); }
 	      		var data = {
@@ -175,7 +184,6 @@ router.post("/teams/new", function(req, res){
    		var obj = data[key];
 		for (var prop in obj) {
 	    	if (obj.hasOwnProperty(prop)){
-    			//console.log(prop + " = " + obj[prop]);
     			if (!obj[prop]){
     				error = true;
     			} else {
@@ -197,30 +205,20 @@ router.post("/teams/new", function(req, res){
 	if (!error){
 		req.getConnection(function(err, connection){
     		if(err){ return next(err); }
-			var query = 'INSERT INTO team (name, user_id, formations_id)';
-				query+= ' VALUES (';
-				query+=	'"' + data.invoer.titel + '",';
-				query+=	req.session.userid + ','; 
-				query+=	req.body.formatie;
-				query+= ');';
-			
+    		var titel = data.invoer.titel;
+    		var user = req.session.userid;
+    		var formatie = req.body.formatie;
+    		var query = getQuery.insertTeam(titel, user, formatie);
+    		console.log(query);
 	  		connection.query(query, function(err, user){
 	      		if(err){ return next(err); }
-	      		var query = 'SELECT MAX(id) AS id FROM team';
+	      		var query = getQuery.lastInsertedId('team');
+	      		console.log(query);
 		  		connection.query(query, function(err, team){
 		      		if(err){ return next(err); }
-		      		var query = 'INSERT INTO team_has_player (team_id, player_id) ';
-						query+= 'VALUES ('+team[0].id+','+req.body.p1+'), ';
-						query+= '('+team[0].id+','+req.body.p2+'), ';
-						query+= '('+team[0].id+','+req.body.p3+'), ';
-						query+= '('+team[0].id+','+req.body.p4+'), ';
-						query+= '('+team[0].id+','+req.body.p5+'), ';
-						query+= '('+team[0].id+','+req.body.p6+'), ';
-						query+= '('+team[0].id+','+req.body.p7+'), ';
-						query+= '('+team[0].id+','+req.body.p8+'), ';
-						query+= '('+team[0].id+','+req.body.p9+'), ';
-						query+= '('+team[0].id+','+req.body.p10+'), ';
-						query+= '('+team[0].id+','+req.body.p11+');';
+		      		var teamid = team[0].id;
+		      		var body = req.body;
+		      		var query = getQuery.insertPlayersInTeam(teamid, body)
 					console.log(query);
 		      		connection.query(query, function(err, bla){
 		      			if(err){ return next(err); }

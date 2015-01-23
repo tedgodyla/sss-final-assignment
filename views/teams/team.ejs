@@ -1,10 +1,8 @@
 <% include ../layouts/header %>
 
-<h1>Hello world</h1>
-
 <h1><%= name %></h1>
-<p>Gemaakt op: <%= created_at %></p>
-<p>Door: <%= user_name %></p>
+<h2><span class="cap"><%= creator_name %></span></h2>
+<h4>Gemaakt op: <%= created_at %></h4>
 
 <section class="left">
 	<section id="field" class="f<%= formatie %>">
@@ -16,9 +14,45 @@
 	</section>
 </section>
 
-<!-- <h2>Spelers van club</h2>
-<pre>
-<%= JSON.stringify(team, null, "  ") %>
+<section class="placeComment">
+	<h2>Reactie plaatsen</h2>
+	<form action="<%= originalUrl %>" method="post">
+		<% if (user_id){ %>
+			<h3>Reageer als <span class="cap"><%= user_name %></span></h3>
+		<% } else { %>
+			<h3>Reageer als Anoniem</h3>
+			<p><a href="/users/login">Login</a> om onder je eigen naam te reageren</p>
+		<% } %>
+	  	<textarea name="text"></textarea>
+	  	<button type="submit">Plaats bericht</button>
+	</form>
+</section>
+
+<section class="comments">
+	<h2>Reacties</h2>
+	<% if (comments[0]){ %>
+		<% comments.forEach(function(value, index){ %>
+			<article data-id="<%= value.id %>">
+				<header>
+					<% if ( value.user_id ){ %>
+						<h3><a class="cap" href="/users/<%= value.user_id %>"><%= value.name %></a> <%= (creator_name === value.name) ? ' (maker team)' : '' ; %></h3>
+					<% } else { %>
+						<h3>Anoniem</h3>
+					<% } %>
+					<h4><%= value.created_at %></h4>
+					<div class="clear"></div>
+				</header>
+				<section class="body">
+					<p><%= value.text %></p>
+				</section>
+			</article>
+		<% }); %>
+	<% } else { %>
+		<p>Er zijn nog geen reacties geplaatst onder dit team.</p>
+	<% } %>
+</section>
+<!-- <pre>
+<%= JSON.stringify(comments, null, "  ") %>
 </pre> -->
 
 <% include ../layouts/footer %>
