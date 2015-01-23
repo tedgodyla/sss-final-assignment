@@ -32,7 +32,7 @@
 	<h2>Reacties</h2>
 	<% if (comments[0]){ %>
 		<% comments.forEach(function(value, index){ %>
-			<article data-id="<%= value.id %>">
+			<article id="<%= value.id %>">
 				<header>
 					<% if ( value.user_id ){ %>
 						<h3><a class="cap" href="/users/<%= value.user_id %>"><%= value.name %></a> <%= (creator_name === value.name) ? ' (maker team)' : '' ; %></h3>

@@ -14,7 +14,7 @@
     </article>
 	<% comments.forEach(function(value, index){ %>
 	    <article>
-	    	<a href="/teams/<%= value.team_id %>">
+	    	<a href="/teams/<%= value.team_id %>#<%= value.id %>">
 	    		<header><%= value.name %></header>
 	    		<section><%= value.text %></section>
 	    		<div class="clear"></div>
