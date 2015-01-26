@@ -1,8 +1,13 @@
 var express = require('express');
 var multer  = require('multer');
+var crypto = require('crypto');
 var router = express.Router();
 var getQuery = require('../lib/query');
 
+// PASSWORD SECURITY
+var shasum = crypto.createHash('sha1');
+
+// FILE UPLOAD
 router.use(multer({
   dest: './uploads/'
 }))
@@ -100,9 +105,9 @@ router.post("/signup", function(req, res){
 		      			data.message = 'Deze username en emailadres zijn al in gebruik.';
 		      			res.render("users/signup", data);
 		      		} else if (user[0]){
-		      			if (user[0].name === username && user[0].email === email) {
+		      			if (user[0].name.toUpperCase() === username && user[0].email.toUpperCase() === email) {
 		      				data.message = 'Deze username en emailadres zijn al in gebruik.';
-		      			} else if (user[0].name === username) {
+		      			} else if (user[0].name.toUpperCase() === username) {
 			      			data.message = 'Deze username is al in gebruik.';
 			    		} else {
 			    			data.message = 'Dit emailadres is al in gebruik.';

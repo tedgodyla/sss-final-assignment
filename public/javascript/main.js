@@ -49,7 +49,7 @@ window.onload = function () {
         }
         setTimeout(function(){
           playerDropdown.style.display = "none";
-        }, 10);
+        }, 300);
       });
       playerInputFields[i].addEventListener("focus", function(){
         currentInputField = this;
