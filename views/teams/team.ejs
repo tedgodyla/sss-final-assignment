@@ -1,8 +1,11 @@
 <% include ../layouts/header %>
 
-<h1><%= name %></h1>
-<h2><a class="cap" href="/users/<%= creator.id %>"><%= creator.name %></a></h2>
-<h4>Gemaakt op: <%= created_at %></h4>
+<header>
+	<h1><%= name %></h1>
+	<section class="image" style="background-image: url(/uploads/<%= image_name %>);"></section>
+	<h2><a class="cap" href="/users/<%= creator.id %>"><%= creator.name %></a></h2>
+	<h4>Gemaakt op: <%= created_at %></h4>
+</header>
 
 <section class="left">
 	<section id="field" class="f<%= formatie %>">

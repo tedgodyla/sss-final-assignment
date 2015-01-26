@@ -21,6 +21,9 @@ var io = socketIo(server);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// view uploaded files
+app.use("/uploads", express.static(__dirname + '/uploads'));
+
 //  ============================
 //  = Middleware configuration =
 //  ============================
@@ -76,13 +79,12 @@ var usersRouter = require('./routers/users');
 var clubsRouter = require('./routers/clubs');
 var homeRouter = require('./routers/home');
 var teamsRouter = require('./routers/teams');
-var uploadRouter = require('./routers/upload');
+var newteamRouter = require('./routers/newteam');
 
 app.use('/users', usersRouter);
 app.use('/clubs', clubsRouter);
 app.use('/teams', teamsRouter);
-app.use('/upload', uploadRouter);
-app.use('/users/teams/new', uploadRouter);
+app.use('/users/teams/new', newteamRouter);
 app.use('/', homeRouter);
 
 // This should be the ONLY route in this file!

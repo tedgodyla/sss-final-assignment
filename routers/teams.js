@@ -70,6 +70,7 @@ router.get("/:id", function (req, res) {
         originalUrl: req.originalUrl,
   			team: team,
         name: team[0].name,
+        image_name: team[0].image_name,
         creator: creator,
         created_at: team[0].created_at,
         formatie: team[0].formatie_name,
