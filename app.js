@@ -82,6 +82,7 @@ app.use('/users', usersRouter);
 app.use('/clubs', clubsRouter);
 app.use('/teams', teamsRouter);
 app.use('/upload', uploadRouter);
+app.use('/users/teams/new', uploadRouter);
 app.use('/', homeRouter);
 
 // This should be the ONLY route in this file!

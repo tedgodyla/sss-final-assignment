@@ -1,8 +1,6 @@
 var express = require('express');
 var multer  = require('multer');
 var router = express.Router();
-//var fs = require('fs');
-//var gm = require('gm');
 var getQuery = require('../lib/query');
 
 router.use(multer({
@@ -175,26 +173,6 @@ router.get("/:id", function(req, res){
   			});
     	});
   	});
-});
-
-// TEAM AANMAKEN GET
-router.get("/teams/new", function(req, res){
-	if (req.session.userid) { 
-		req.getConnection(function(err, connection){
-    		if(err){ return next(err); }
-    		var query = 'SELECT id,name FROM player';
-	  		connection.query(query, function(err, players){
-	      		if(err){ return next(err); }
-	      		var data = {
-	      			baseUrl: req.baseUrl,
-	      			players: players
-	      		}
-	      		res.render("users/new_team", data);
-	    	});
-	  	});
-  	} else {
-    	res.redirect(req.baseUrl + "/login");
-  	}
 });
 
 // TEAM AANMAKEN POST
