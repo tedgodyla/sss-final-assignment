@@ -7,18 +7,15 @@
 		<article>
     		<header>Naam</header>
     		<section class="formatie">Formatie</section>
-    		<section class="opties">Opties</section>
     		<div class="clear"></div>
 	    </article>
 	  	<% teams.forEach(function(value, index){ %>
 		    <article>
-	    		<header><%= value.name %></header>
-	    		<section class="formatie"><%= value.formation %></section>
-	    		<section class="opties">
-	    			<a href="<%= baseUrl %>/teams/edit/<%= value.id %>">Aanpassen</a>
-	    			<a href="/teams/<%= value.id %>">Bekijken</a>
-	    		</section>
-	    		<div class="clear"></div>
+		    	<a href="/teams/<%= value.id %>">
+		    		<header><%= value.name %></header>
+		    		<section class="formatie"><%= value.formation %></section>
+		    		<div class="clear"></div>
+		    	</a>
 		    </article>
    		<% }); %>
    	</section>
