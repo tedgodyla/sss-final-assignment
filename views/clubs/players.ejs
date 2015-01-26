@@ -1,10 +1,22 @@
 <% include ../layouts/header %>
 
-<h1>Hello world</h1>
 
-<h2>Spelers van club</h2>
-<pre>
-<%= JSON.stringify(players, null, "  ") %>
-</pre>
+
+<section class="list clubs">
+	<article>
+		<header>Naam</header>
+		<section class="players-list">Rugnummer</section>
+		<section class="players-list">Rol</section>
+		<div class="clear"></div>
+    </article>
+	<% players.forEach(function(value, index){ %>
+	    <article>
+		    	<header><%= value.name %></header>
+		    	<section class="players-list"><%= value.number %></section>
+		    	<section class="players-list"><%= value.role %></section>
+		    	<div class="clear"></div>
+	    </article>
+	<% }); %>
+</section>
 
 <% include ../layouts/footer %>

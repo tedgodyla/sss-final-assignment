@@ -23,7 +23,7 @@ router.get("/:id", function (req, res) {
 	req.getConnection(function(err, connection){
     	if(err){ return next(err); }
 
-      var query = 'SELECT * FROM player WHERE club_id = ' + index;
+      var query = 'SELECT player.name, player.number, preffered_role.name AS role FROM player LEFT JOIN preffered_role ON player.preffered_role_id = preffered_role.id WHERE club_id = ' + index;
     	connection.query(query, function(err, players){
       		if(err){ return next(err); }
       		res.render('clubs/players', {players: players});
