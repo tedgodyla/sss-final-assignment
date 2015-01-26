@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `notejs` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `notejs`;
--- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
+-- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
--- Host: 127.0.0.1    Database: notejs
+-- Host: localhost    Database: notejs
 -- ------------------------------------------------------
--- Server version	5.6.21
+-- Server version	5.6.21-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -115,7 +115,7 @@ CREATE TABLE `player` (
   KEY `fk_player_club1_idx` (`club_id`),
   CONSTRAINT `fk_player_club1` FOREIGN KEY (`club_id`) REFERENCES `club` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_player_preffered_role` FOREIGN KEY (`preffered_role_id`) REFERENCES `preffered_role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `player` (
 
 LOCK TABLES `player` WRITE;
 /*!40000 ALTER TABLE `player` DISABLE KEYS */;
-INSERT INTO `player` VALUES (1,'Jeroen Zoet',NULL,NULL,1,3,0),(2,'Nicolas Isimat-Mirin',NULL,NULL,2,3,1),(3,'Karim Rekik',NULL,NULL,2,3,2),(4,'Santiago Arias',NULL,NULL,2,3,3),(5,'Jeffrey Bruma',NULL,NULL,2,3,4),(6,'Adam Maher',NULL,NULL,3,3,5),(7,'Memphis Depay',NULL,NULL,4,3,6),(8,'Stijn Schaars',NULL,NULL,3,3,7),(9,'Luuk de Jong',NULL,NULL,4,3,8),(10,'Georginio Wijnaldum	',NULL,NULL,3,3,9),(11,'Luciano Narsingh',NULL,NULL,4,3,10),(12,'Florian Jozefzoon',NULL,NULL,4,3,11),(13,'Jetro Willems',NULL,NULL,2,3,14),(14,'Jurgen Locadia',NULL,NULL,4,3,15),(15,'Andres Guardado',NULL,NULL,3,3,17),(16,'Joshua Brenet',NULL,NULL,2,3,18),(17,'Remko Pasveer',NULL,NULL,1,3,20),(18,'Rai Vloet',NULL,NULL,3,3,22),(19,'Marcel Ritzmaier',NULL,NULL,3,3,23);
+INSERT INTO `player` VALUES (1,'Jeroen Zoet',NULL,NULL,1,3,0),(2,'Nicolas Isimat-Mirin',NULL,NULL,2,3,1),(3,'Karim Rekik',NULL,NULL,2,3,2),(4,'Santiago Arias',NULL,NULL,2,3,3),(5,'Jeffrey Bruma',NULL,NULL,2,3,4),(6,'Adam Maher',NULL,NULL,3,3,5),(7,'Memphis Depay',NULL,NULL,4,3,6),(8,'Stijn Schaars',NULL,NULL,3,3,7),(9,'Luuk de Jong',NULL,NULL,4,3,8),(10,'Georginio Wijnaldum	',NULL,NULL,3,3,9),(11,'Luciano Narsingh',NULL,NULL,4,3,10),(12,'Florian Jozefzoon',NULL,NULL,4,3,11),(13,'Jetro Willems',NULL,NULL,2,3,14),(14,'Jurgen Locadia',NULL,NULL,4,3,15),(15,'Andres Guardado',NULL,NULL,3,3,17),(16,'Joshua Brenet',NULL,NULL,2,3,18),(17,'Remko Pasveer',NULL,NULL,1,3,20),(18,'Rai Vloet',NULL,NULL,3,3,22),(19,'Marcel Ritzmaier',NULL,NULL,3,3,23),(20,'Jasper Cillessen',NULL,NULL,1,1,1),(21,'Ricardo van Rhijn',NULL,NULL,2,1,2),(22,'Joel Veltman',NULL,NULL,2,1,3),(23,'Niklas Moisander',NULL,NULL,2,1,4),(24,'Nicolai Boilessen',NULL,NULL,2,1,5),(25,'Mike van der Hoorn',NULL,NULL,2,1,6),(26,'Viktor Fischer',NULL,NULL,4,1,7),(27,'Lerin Duarte',NULL,NULL,3,1,8),(28,'Kolbein Sigtorsson',NULL,NULL,4,1,9),(29,'Davy Klaasen',NULL,NULL,3,1,10),(30,'Ricardo Kishna',NULL,NULL,4,1,11),(31,'Jairo Riedewald',NULL,NULL,2,1,12),(32,'Lucas Anderssen',NULL,NULL,3,1,16),(33,'Robert Muric',NULL,NULL,4,1,18),(34,'Arek Milik',NULL,NULL,4,1,19),(35,'Lasse Schone',NULL,NULL,4,1,20),(36,'Anwar El Ghazi',NULL,NULL,4,1,21),(37,'Thulani Serero',NULL,NULL,3,1,25),(38,'Richairo Zivkovic',NULL,NULL,4,1,30),(39,'Kenneth Vermeer',NULL,NULL,1,2,16),(40,'Luke Wilkshire',NULL,NULL,2,2,2),(41,'Terence Kongolo',NULL,NULL,2,2,5),(42,'Sven van Beek',NULL,NULL,2,2,22),(43,'Miquel Nelom',NULL,NULL,2,2,18),(44,'Jordy Clasie',NULL,NULL,3,2,6),(45,'Lex Immers',NULL,NULL,3,2,10),(46,'Jens Toornstra',NULL,NULL,4,2,28),(47,'Kraim El Ahmadi',NULL,NULL,3,2,8),(48,'Jean-Paul Boetius',NULL,NULL,4,2,7),(49,'Colin Kazim-Richards',NULL,NULL,4,2,15),(50,'Elvis Manu',NULL,NULL,4,2,17);
 /*!40000 ALTER TABLE `player` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,4 +248,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-26 12:36:57
+-- Dump completed on 2015-01-26 12:52:44
