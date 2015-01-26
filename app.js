@@ -5,7 +5,6 @@ var path = require('path');
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var bodyParser = require('body-parser');
-var multer = require('multer');
 var mysql = require('mysql');
 var myConnection = require('express-myconnection');
 
@@ -41,9 +40,9 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Setup Multer
-app.use(multer({
-	dest: './uploads/'
-}));
+// app.use(multer({
+// 	dest: './uploads/'
+// }));
 
 // Setup MySQL
 
@@ -77,10 +76,12 @@ var usersRouter = require('./routers/users');
 var clubsRouter = require('./routers/clubs');
 var homeRouter = require('./routers/home');
 var teamsRouter = require('./routers/teams');
+var uploadRouter = require('./routers/upload');
 
 app.use('/users', usersRouter);
 app.use('/clubs', clubsRouter);
 app.use('/teams', teamsRouter);
+app.use('/upload', uploadRouter);
 app.use('/', homeRouter);
 
 // This should be the ONLY route in this file!
@@ -107,11 +108,11 @@ io.on("connection", function(socket){
   socket.emit("welcome", "Hello!");
 
   socket.on("message", function(data){
-    console.log("Message received:", data);
+    //console.log("Message received:", data);
     io.emit("message", data)
   });
 
   socket.on("disconnect", function(){
-    console.log("Disconnect")
+    //console.log("Disconnect")
   })
 })

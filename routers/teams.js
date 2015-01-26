@@ -61,12 +61,16 @@ router.get("/:id", function (req, res) {
 		var query = getQuery.selectTeamById(index);
 		connection.query(query, function(err, team){
 			if(err){ return next(err); }
+      var creator = {
+        id: team[0].creator_id,
+        name: team[0].creator_name
+      }
 			var data = {
   			baseUrl: req.baseUrl,
         originalUrl: req.originalUrl,
   			team: team,
         name: team[0].name,
-        creator_name: team[0].user_name,
+        creator: creator,
         created_at: team[0].created_at,
         formatie: team[0].formatie_name,
         user_id: req.session.userid,

@@ -50,7 +50,7 @@ a.btn {
 	padding: .7em 1.2em;
 	border-radius: 0.2em;
 	text-decoration: none;
-	margin: 0 0 1.5em;
+	margin: 0 1em 1.5em 0em;
 }
 
 a.btn:hover {

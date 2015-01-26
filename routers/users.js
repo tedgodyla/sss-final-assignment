@@ -1,6 +1,13 @@
 var express = require('express');
+var multer  = require('multer');
 var router = express.Router();
+//var fs = require('fs');
+//var gm = require('gm');
 var getQuery = require('../lib/query');
+
+router.use(multer({
+  dest: './uploads/'
+}))
 
 // HOOFDMENU GEBRUIKER
 router.get("/", function (req, res) {
@@ -11,7 +18,7 @@ router.get("/", function (req, res) {
     	req.getConnection(function(err, connection){
     		if(err){ return next(err); }
     		var userid = req.session.userid;
-    		var query = getQuery.selectCommentsForUser(userid);
+    		var query = getQuery.selectCommentsForUser(userid, 8);
 	  		connection.query(query, function(err, comments){
 	      		if(err){ return next(err); }
 	      		data.comments = comments;
@@ -149,6 +156,27 @@ router.get("/teams", function(req, res){
   	}
 });
 
+router.get("/:id", function(req, res){
+	var index = parseInt(req.params.id, 10);
+	req.getConnection(function(err, connection){
+		if(err){ return next(err); }
+		var user = index;
+		var query = getQuery.selectUserTeams(user);
+  		connection.query(query, function(err, teams){
+      		if(err){ return next(err); }
+      		var data = {
+      			baseUrl: req.baseUrl,
+      			teams: teams
+      		}
+      		var query = getQuery.selectCommentsFromUser(user, 5);
+  			connection.query(query, function(err, comments){
+  				data.comments = comments;
+  				res.render("users/view", data);
+  			});
+    	});
+  	});
+});
+
 // TEAM AANMAKEN GET
 router.get("/teams/new", function(req, res){
 	if (req.session.userid) { 
@@ -200,32 +228,34 @@ router.post("/teams/new", function(req, res){
 		}
 	}
 
-	console.log(arr);
-
 	if (!error){
 		req.getConnection(function(err, connection){
     		if(err){ return next(err); }
+    		console.log(req);
     		var titel = data.invoer.titel;
     		var user = req.session.userid;
     		var formatie = req.body.formatie;
-    		var query = getQuery.insertTeam(titel, user, formatie);
-    		console.log(query);
-	  		connection.query(query, function(err, user){
-	      		if(err){ return next(err); }
-	      		var query = getQuery.lastInsertedId('team');
-	      		console.log(query);
-		  		connection.query(query, function(err, team){
-		      		if(err){ return next(err); }
-		      		var teamid = team[0].id;
-		      		var body = req.body;
-		      		var query = getQuery.insertPlayersInTeam(teamid, body)
-					console.log(query);
-		      		connection.query(query, function(err, bla){
-		      			if(err){ return next(err); }
-		      			res.redirect('/users/teams');
-		      		});
-		    	});
-	    	});
+    		res.send('dfas');
+    	// 	var query = getQuery.insertTeam(titel, user, formatie);
+	  		// connection.query(query, function(err, user){
+	    //   		if(err){ return next(err); }
+	    //   		var query = getQuery.lastInsertedId('team');
+		  	// 	connection.query(query, function(err, team){
+		   //    		if(err){ return next(err); }
+		   //    		var teamid = team[0].id;
+		   //    		var body = req.body;
+		   //    		var query = getQuery.insertPlayersInTeam(teamid, body)
+		   //    		connection.query(query, function(err, bla){
+		   //    			if(err){ return next(err); }
+		   //    			console.log(req.files);
+		   //    			var upload = req.files.upload;
+					// 	console.log(upload);
+					// 	//gm('/path/to/my/img.jpg').options({imageMagick: true}).resize(240, 240);
+
+		   //    			res.redirect('/users/teams');
+		   //    		});
+		   //  	});
+	    // 	});
 	  	});
 	} else {
 		res.send('vul alle velden in');

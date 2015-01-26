@@ -1,7 +1,7 @@
 <% include ../layouts/header %>
 
 <h1><%= name %></h1>
-<h2><span class="cap"><%= creator_name %></span></h2>
+<h2><a class="cap" href="/users/<%= creator.id %>"><%= creator.name %></a></h2>
 <h4>Gemaakt op: <%= created_at %></h4>
 
 <section class="left">
@@ -35,7 +35,7 @@
 			<article id="<%= value.id %>">
 				<header>
 					<% if ( value.user_id ){ %>
-						<h3><a class="cap" href="/users/<%= value.user_id %>"><%= value.name %></a> <%= (creator_name === value.name) ? ' (maker team)' : '' ; %></h3>
+						<h3><a class="cap" href="/users/<%= value.user_id %>"><%= value.name %></a> <%= (creator.id === value.user_id) ? ' (maker team)' : '' ; %></h3>
 					<% } else { %>
 						<h3>Anoniem</h3>
 					<% } %>
