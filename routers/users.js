@@ -1,11 +1,8 @@
 var express = require('express');
 var multer  = require('multer');
-var crypto = require('crypto');
+var bcrypt = require('bcrypt');
 var router = express.Router();
 var getQuery = require('../lib/query');
-
-// PASSWORD SECURITY
-var shasum = crypto.createHash('sha1');
 
 // FILE UPLOAD
 router.use(multer({
@@ -54,13 +51,22 @@ router.post("/login", function(req, res){
   	if (username && password) {
   		req.getConnection(function(err, connection){
     		if(err){ return next(err); }
-    		var query = getQuery.selectUser(username, password);
+    		var query = 'SELECT id, name, password FROM user WHERE name = "' + username + '"';
 	  		connection.query(query, function(err, user){
 	      		if(err){ return next(err); }
 	      		if (user[0]){
-		      		req.session.userid = user[0].id;
-		      		req.session.username = user[0].name;
-		    		res.redirect('/users');
+		      		var hash = user[0].password;
+		      		//Load password hash from DB
+					bcrypt.compare(password, hash, function(err, res1) {
+						if (res1){
+							req.session.userid = user[0].id;
+				      		req.session.username = user[0].name;
+				    		res.redirect('/users');
+						} else {
+							data.message = 'Ongeldig wachtwoord';
+	    					res.render("users/login", data);
+						}
+					});
 	    		} else {
 	    			data.message = 'Ongeldig gebruikersnaam of wachtwoord';
 	    			res.render("users/login", data);
@@ -114,17 +120,19 @@ router.post("/signup", function(req, res){
 			    		}
 			    		res.render("users/signup", data);
 			    	} else {
-			    		var query = 'INSERT INTO user (name, password, email) VALUES ("' + username + '", "' + password1 + '", "' + email + '")';
-				  		connection.query(query, function(err, user){
-				      		if(err){ return next(err); }
-				      		var query = 'SELECT id FROM user WHERE name = "' + username + '"';
+			    		bcrypt.hash(password1, 10, function(err, hash) {
+						    var query = 'INSERT INTO user (name, password, email) VALUES ("' + username + '", "' + hash + '", "' + email + '")';
 					  		connection.query(query, function(err, user){
 					      		if(err){ return next(err); }
-					      		req.session.userid = user[0].id;
-				      			req.session.username = username;
-				    			res.redirect('/users');
+					      		var query = 'SELECT id FROM user WHERE name = "' + username + '"';
+						  		connection.query(query, function(err, user){
+						      		if(err){ return next(err); }
+						      		req.session.userid = user[0].id;
+					      			req.session.username = username;
+					    			res.redirect('/users');
+						    	});
 					    	});
-				    	});
+						});
 		    		}
 		    	});
 		  	});
