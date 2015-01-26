@@ -532,3 +532,30 @@ section.players-list {
 	width:10em;
 }
 
+header.teams {
+	position:relative;
+	margin-bottom:1.5em;
+}
+
+header h1.teams-header {
+	margin-bottom:0;
+}
+
+header h2.teams-header {
+	margin-top:1em;
+}
+
+header .teams-header {
+	margin-left:210px;
+}
+
+header section.image {
+	height: 120px;
+	width: 200px;
+	background-repeat:no-repeat;
+	position:absolute;
+	top:0;
+	left:0;
+	background-size: auto 100%;
+}
+

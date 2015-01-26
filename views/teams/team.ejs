@@ -1,10 +1,10 @@
 <% include ../layouts/header %>
 
-<header>
-	<h1><%= name %></h1>
+<header class="teams">
+	<h1 class="teams-header"><%= name %></h1>
 	<section class="image" style="background-image: url(/uploads/<%= image_name %>);"></section>
-	<h2><a class="cap" href="/users/<%= creator.id %>"><%= creator.name %></a></h2>
-	<h4>Gemaakt op: <%= created_at %></h4>
+	<h2 class="teams-header">Door: <a class="cap" href="/users/<%= creator.id %>"><%= creator.name %></a></h2>
+	<h4 class="teams-header">Gemaakt op: <%= created_at %></h4>
 </header>
 
 <section class="left">
