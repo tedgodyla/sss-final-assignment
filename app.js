@@ -21,15 +21,15 @@ var io = socketIo(server);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// view uploaded files
-app.use("/uploads", express.static(__dirname + '/uploads'));
-
 //  ============================
 //  = Middleware configuration =
 //  ============================
 
 // Setup serving static assets
 app.use(express.static(path.join(__dirname, 'public')));
+
+// view uploaded files
+app.use("/uploads", express.static(__dirname + '/uploads'));
 
 // Add session support
 app.use(session({
@@ -41,11 +41,6 @@ app.use(session({
 
 // Setup bodyparser
 app.use(bodyParser.urlencoded({extended: true}));
-
-// Setup Multer
-// app.use(multer({
-// 	dest: './uploads/'
-// }));
 
 // Setup MySQL
 
@@ -86,13 +81,6 @@ app.use('/clubs', clubsRouter);
 app.use('/teams', teamsRouter);
 app.use('/users/teams/new', newteamRouter);
 app.use('/', homeRouter);
-
-// This should be the ONLY route in this file!
-// app.get('/', function(req, res){
-//   	res.render('index', {
-// 		baseUrl: req.baseUrl,
-// 	});
-// });
 
 //  =================
 //  = Start the app =

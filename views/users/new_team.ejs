@@ -2,17 +2,29 @@
 
 <h1>Team aanmaken</h1>
 
-<section class="right">
-	<form action="<%= baseUrl %>" method="post"  enctype="multipart/form-data">
-		<label for="titel">Teamnaam</label>
-		<input id="titel" type="text" name="titel" />
-		<label for="formatie">Formatie</label>
-		<select id="formatie" name="formatie">
-			<option value="1">4-3-3</option>
-			<option value="2">5-3-2</option>
-			<option value="3">4-4-2</option>
-		</select><br/>
-		<input type="file" name="image" value="">
+<form action="<%= baseUrl %>" method="post"  enctype="multipart/form-data">
+	<section class="right">
+		<section class="header">
+			<div>Teamnaam</div>
+			<div>Formatie</div>
+			<div>Logo</div>
+			<div class="clear"></div>
+		</section>
+		<div class="clear"></div>
+		<section class="bod">
+			<div><input id="titel" type="text" name="titel" /></div>
+			<div>
+				<select id="formatie" name="formatie">
+					<option value="1">4-3-3</option>
+					<option value="2">5-3-2</option>
+					<option value="3">4-4-2</option>
+				</select><br/>
+			</div>
+			<div>
+				<input type="file" name="image" value="">
+			</div>
+			<div class="clear"></div>
+		</section>
 	  	<input id="pp1" type="hidden" name="p1" value="1">
 	  	<input id="pp2" type="hidden" name="p2" value="2">
 	  	<input id="pp3" type="hidden" name="p3" value="3">
@@ -24,46 +36,46 @@
 	  	<input id="pp9" type="hidden" name="p9" value="9">
 	  	<input id="pp10" type="hidden" name="p10" value="10">
 	  	<input id="pp11" type="hidden" name="p11" value="11">
-	  	<button type="submit">Opslaan</button>
-	</form>
-</section>
-<section class="left">
-	<section id="field" class="f4-3-3">
-		<section class="inputCnt p1">
-			<input id="p1" class="playerInput" type="text" />
-		</section>
-		<section class="inputCnt p2">
-			<input id="p2" class="playerInput" type="text" />
-		</section>
-		<section class="inputCnt p3">
-			<input id="p3" class="playerInput" type="text" />
-		</section>
-		<section class="inputCnt p4">
-			<input id="p4" class="playerInput" type="text" />
-		</section>
-		<section class="inputCnt p5">
-			<input id="p5" class="playerInput" type="text" />
-		</section>
-		<section class="inputCnt p6">
-			<input id="p6" class="playerInput" type="text" />
-		</section>
-		<section class="inputCnt p7">
-			<input id="p7" class="playerInput" type="text" />
-		</section>
-		<section class="inputCnt p8">
-			<input id="p8" class="playerInput" type="text" />
-		</section>
-		<section class="inputCnt p9">
-			<input id="p9" class="playerInput" type="text" />
-		</section>
-		<section class="inputCnt p10">
-			<input id="p10" class="playerInput" type="text" />
-		</section>
-		<section class="inputCnt p11">
-			<input id="p11" class="playerInput" type="text" />
+	</section>
+	<section class="left">
+		<section id="field" class="f4-3-3">
+			<section class="inputCnt p1">
+				<input id="p1" class="playerInput" type="text" />
+			</section>
+			<section class="inputCnt p2">
+				<input id="p2" class="playerInput" type="text" />
+			</section>
+			<section class="inputCnt p3">
+				<input id="p3" class="playerInput" type="text" />
+			</section>
+			<section class="inputCnt p4">
+				<input id="p4" class="playerInput" type="text" />
+			</section>
+			<section class="inputCnt p5">
+				<input id="p5" class="playerInput" type="text" />
+			</section>
+			<section class="inputCnt p6">
+				<input id="p6" class="playerInput" type="text" />
+			</section>
+			<section class="inputCnt p7">
+				<input id="p7" class="playerInput" type="text" />
+			</section>
+			<section class="inputCnt p8">
+				<input id="p8" class="playerInput" type="text" />
+			</section>
+			<section class="inputCnt p9">
+				<input id="p9" class="playerInput" type="text" />
+			</section>
+			<section class="inputCnt p10">
+				<input id="p10" class="playerInput" type="text" />
+			</section>
+			<section class="inputCnt p11">
+				<input id="p11" class="playerInput" type="text" />
+			</section>
 		</section>
 	</section>
-</section>
+	<button type="submit">Opslaan</button>
+</form>
 
 <% if (players.length > 0){ %>
 	<section id="playerDropdown">

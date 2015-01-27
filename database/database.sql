@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `notejs` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `notejs`;
--- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
 --
--- Host: localhost    Database: notejs
+-- Host: 127.0.0.1    Database: notejs
 -- ------------------------------------------------------
--- Server version	5.6.21-log
+-- Server version	5.6.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -58,7 +58,7 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`id`,`team_id`),
   KEY `fk_comment_team1_idx` (`team_id`),
   CONSTRAINT `fk_comment_team1` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,9,1,'2015-01-23 14:30:50','Sed luctus tortor non posuere lacinia. Aenean maximus enim pellentesque blandit faucibus. In vitae viverra dui. Praesent ultrices fringilla eros, non vehicula erat auctor quis.'),(2,9,1,'2015-01-23 14:31:09','Aenean nisl mi, sollicitudin et rhoncus non, commodo sit amet felis. Quisque pulvinar hendrerit ipsum, in tristique ligula placerat blandit. Quisque sed justo luctus, elementum lectus sed, viverra est. In dignissim nulla pretium est dignissim, dapibus venenatis dui tempus. Nullam vestibulum, nunc ut gravida pharetra, velit est fermentum lacus, eu pharetra orci libero ut eros.'),(3,8,0,'2015-01-23 14:35:22','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et enim nec nibh condimentum bibendum.'),(4,9,0,'2015-01-23 14:35:59','Haha wauw, sorry hoor, maar waarom zet je Memphis Depay rechts back...'),(5,9,0,'2015-01-23 14:36:40','Phasellus nec blandit nibh. Nullam rutrum neque a lectus tincidunt volutpat. Integer suscipit lorem rhoncus diam facilisis tempor. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed cursus hendrerit finibus. Curabitur lacinia enim in commodo tincidunt. Ut scelerisque lacus leo, non finibus nulla consectetur a. Suspendisse id sem nec turpis lacinia viverra vitae et ante.'),(6,9,0,'2015-01-23 14:41:12','goed team man'),(7,8,1,'2015-01-23 17:27:36','fadsfds'),(8,9,11,'2015-01-23 17:28:02','fasdfds'),(9,11,11,'2015-01-23 17:28:26','Haha, laat me niet lachen'),(10,11,11,'2015-01-23 17:29:49','Nee, grapje, hij is wel oke'),(11,11,2,'2015-01-23 17:38:10','Kan beter. Wissel Vloet met Pasveer.'),(12,7,2,'2015-01-23 17:39:47','Donec commodo sem non volutpat tristique. Phasellus sit amet tellus ut lacus maximus pulvinar ut sit amet orci. Etiam fringilla eros lacus, vitae mattis erat ullamcorper consequat. Quisque accumsan placerat mauris et fringilla. Curabitur vel congue ligula. Cras non commodo turpis, et commodo elit. Morbi aliquam laoreet turpis id tristique. Cras purus massa, luctus quis lobortis sed, hendrerit a est. Sed vulputate nulla eget dolor dignissim aliquet. Curabitur in dolor sit amet turpis elementum congue.'),(13,15,13,'2015-01-23 18:27:38','Een beste team al zeg ik het zelf.'),(14,9,13,'2015-01-23 18:28:51','Aliquam tincidunt orci nibh, quis egestas eros iaculis vitae. Nam condimentum aliquet purus, eget sollicitudin ipsum varius eget. Vestibulum velit risus, euismod in aliquet in, dignissim quis nibh. Nullam ligula nisi, laoreet a metus eget, viverra molestie lectus. Proin et viverra arcu. Suspendisse sodales eleifend elit vel commodo. Sed ut iaculis urna, sed facilisis nisl.'),(15,14,0,'2015-01-23 20:18:44','goede opstelling'),(16,16,1,'2015-01-23 20:20:55','goede team'),(17,11,1,'2015-01-26 10:47:04','dvvxczxc'),(18,9,1,'2015-01-26 10:47:20','dfasadfss');
+INSERT INTO `comment` VALUES (1,9,1,'2015-01-23 14:30:50','Sed luctus tortor non posuere lacinia. Aenean maximus enim pellentesque blandit faucibus. In vitae viverra dui. Praesent ultrices fringilla eros, non vehicula erat auctor quis.'),(2,9,1,'2015-01-23 14:31:09','Aenean nisl mi, sollicitudin et rhoncus non, commodo sit amet felis. Quisque pulvinar hendrerit ipsum, in tristique ligula placerat blandit. Quisque sed justo luctus, elementum lectus sed, viverra est. In dignissim nulla pretium est dignissim, dapibus venenatis dui tempus. Nullam vestibulum, nunc ut gravida pharetra, velit est fermentum lacus, eu pharetra orci libero ut eros.'),(3,8,0,'2015-01-23 14:35:22','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et enim nec nibh condimentum bibendum.'),(4,9,0,'2015-01-23 14:35:59','Haha wauw, sorry hoor, maar waarom zet je Memphis Depay rechts back...'),(5,9,0,'2015-01-23 14:36:40','Phasellus nec blandit nibh. Nullam rutrum neque a lectus tincidunt volutpat. Integer suscipit lorem rhoncus diam facilisis tempor. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed cursus hendrerit finibus. Curabitur lacinia enim in commodo tincidunt. Ut scelerisque lacus leo, non finibus nulla consectetur a. Suspendisse id sem nec turpis lacinia viverra vitae et ante.'),(6,9,0,'2015-01-23 14:41:12','goed team man'),(7,8,1,'2015-01-23 17:27:36','fadsfds'),(8,9,11,'2015-01-23 17:28:02','fasdfds'),(9,11,11,'2015-01-23 17:28:26','Haha, laat me niet lachen'),(10,11,11,'2015-01-23 17:29:49','Nee, grapje, hij is wel oke'),(11,11,2,'2015-01-23 17:38:10','Kan beter. Wissel Vloet met Pasveer.'),(12,7,2,'2015-01-23 17:39:47','Donec commodo sem non volutpat tristique. Phasellus sit amet tellus ut lacus maximus pulvinar ut sit amet orci. Etiam fringilla eros lacus, vitae mattis erat ullamcorper consequat. Quisque accumsan placerat mauris et fringilla. Curabitur vel congue ligula. Cras non commodo turpis, et commodo elit. Morbi aliquam laoreet turpis id tristique. Cras purus massa, luctus quis lobortis sed, hendrerit a est. Sed vulputate nulla eget dolor dignissim aliquet. Curabitur in dolor sit amet turpis elementum congue.'),(13,15,13,'2015-01-23 18:27:38','Een beste team al zeg ik het zelf.'),(14,9,13,'2015-01-23 18:28:51','Aliquam tincidunt orci nibh, quis egestas eros iaculis vitae. Nam condimentum aliquet purus, eget sollicitudin ipsum varius eget. Vestibulum velit risus, euismod in aliquet in, dignissim quis nibh. Nullam ligula nisi, laoreet a metus eget, viverra molestie lectus. Proin et viverra arcu. Suspendisse sodales eleifend elit vel commodo. Sed ut iaculis urna, sed facilisis nisl.'),(15,14,0,'2015-01-23 20:18:44','goede opstelling'),(16,16,1,'2015-01-23 20:20:55','goede team'),(17,11,1,'2015-01-26 10:47:04','dvvxczxc'),(18,9,1,'2015-01-26 10:47:20','dfasadfss'),(20,23,1,'2015-01-26 13:57:48','Netjes'),(21,13,11,'2015-01-26 13:58:45','Slecht team Bart');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `team` (
   KEY `fk_dream_formation_formations1_idx` (`formations_id`),
   CONSTRAINT `fk_dream_formation_formations1` FOREIGN KEY (`formations_id`) REFERENCES `formation` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_dream_formation_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +180,7 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
-INSERT INTO `team` VALUES (7,'Zo goed dit team',1,1,'2015-01-18 01:04:58',NULL),(8,'superteam',1,2,'2015-01-18 01:06:48',NULL),(9,'Quen\'s team yo',11,2,'2015-01-20 16:34:34',NULL),(11,'beste team ooit dude',1,3,'2015-01-23 14:48:33',NULL),(13,'Dreamteam Bart',2,1,'2015-01-23 15:19:47',NULL),(14,'Dreamteam Bart 2',2,2,'2015-01-23 15:20:37',NULL),(15,'Test team',13,3,'2015-01-23 18:26:59',NULL),(16,'Teds beste team ooit',1,3,'2015-01-23 20:20:43',NULL);
+INSERT INTO `team` VALUES (7,'Zo goed dit team',1,1,'2015-01-18 01:04:58','default.png'),(8,'superteam',1,2,'2015-01-18 01:06:48','default.png'),(9,'Quen\'s team yo',11,2,'2015-01-20 16:34:34','default.png'),(11,'beste team ooit dude',1,3,'2015-01-23 14:48:33','default.png'),(13,'Dreamteam Bart',2,1,'2015-01-23 15:19:47','default.png'),(14,'Dreamteam Bart 2',2,2,'2015-01-23 15:20:37','default.png'),(15,'Test team',13,3,'2015-01-23 18:26:59','default.png'),(16,'Teds beste team ooit',1,3,'2015-01-23 20:20:43','default.png'),(23,'dsfafds',1,1,'2015-01-26 13:53:17','b6b1f40decd02fee96653837956f7b9f.jpg'),(24,'Jan zijn team',25,2,'2015-01-26 14:00:33','8d8ed1f826bf6e09fb5683512efc8e9e.jpg'),(25,'Bart Master Team',2,2,'2015-01-26 14:11:45','default.png');
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,7 +209,7 @@ CREATE TABLE `team_has_player` (
 
 LOCK TABLES `team_has_player` WRITE;
 /*!40000 ALTER TABLE `team_has_player` DISABLE KEYS */;
-INSERT INTO `team_has_player` VALUES (7,1,0),(8,1,0),(9,1,0),(11,1,0),(13,1,0),(14,1,0),(15,1,0),(16,1,0),(7,2,1),(8,2,1),(11,2,5),(13,2,1),(14,2,1),(15,2,5),(16,2,8),(7,3,2),(9,3,1),(11,3,7),(13,3,2),(14,3,2),(15,3,6),(16,3,4),(7,4,3),(8,4,2),(9,4,2),(11,4,8),(13,4,3),(14,4,3),(15,4,7),(16,4,9),(7,5,4),(8,5,3),(9,5,3),(13,5,4),(14,5,4),(15,5,4),(16,5,6),(7,6,5),(9,6,4),(11,6,3),(13,6,5),(14,6,5),(16,6,10),(7,7,6),(8,7,4),(9,7,5),(11,7,9),(13,7,6),(14,7,6),(15,7,9),(16,7,7),(7,8,7),(8,8,5),(11,8,4),(13,8,7),(14,8,7),(15,8,8),(7,9,8),(8,9,6),(9,9,6),(11,9,10),(13,9,8),(14,9,8),(15,9,10),(7,10,9),(9,10,8),(11,10,1),(13,10,9),(14,10,9),(7,11,10),(13,11,10),(14,11,10),(15,11,1),(8,12,7),(9,12,7),(16,12,5),(9,13,10),(16,13,1),(8,14,8),(9,14,9),(8,17,9),(11,17,2),(15,17,2),(16,17,3),(8,18,10),(11,18,6),(15,18,3),(16,18,2);
+INSERT INTO `team_has_player` VALUES (7,1,0),(8,1,0),(9,1,0),(11,1,0),(13,1,0),(14,1,0),(15,1,0),(16,1,0),(23,1,0),(7,2,1),(8,2,1),(11,2,5),(13,2,1),(14,2,1),(15,2,5),(16,2,8),(23,2,1),(7,3,2),(9,3,1),(11,3,7),(13,3,2),(14,3,2),(15,3,6),(16,3,4),(23,3,2),(25,3,4),(7,4,3),(8,4,2),(9,4,2),(11,4,8),(13,4,3),(14,4,3),(15,4,7),(16,4,9),(23,4,3),(24,4,1),(25,4,6),(7,5,4),(8,5,3),(9,5,3),(13,5,4),(14,5,4),(15,5,4),(16,5,6),(23,5,4),(24,5,0),(25,5,7),(7,6,5),(9,6,4),(11,6,3),(13,6,5),(14,6,5),(16,6,10),(23,6,5),(24,6,9),(7,7,6),(8,7,4),(9,7,5),(11,7,9),(13,7,6),(14,7,6),(15,7,9),(16,7,7),(23,7,6),(24,7,7),(25,7,9),(7,8,7),(8,8,5),(11,8,4),(13,8,7),(14,8,7),(15,8,8),(23,8,7),(7,9,8),(8,9,6),(9,9,6),(11,9,10),(13,9,8),(14,9,8),(15,9,10),(23,9,8),(24,9,2),(25,9,1),(7,10,9),(9,10,8),(11,10,1),(13,10,9),(14,10,9),(23,10,9),(24,10,3),(7,11,10),(13,11,10),(14,11,10),(15,11,1),(23,11,10),(8,12,7),(9,12,7),(16,12,5),(9,13,10),(16,13,1),(8,14,8),(9,14,9),(8,17,9),(11,17,2),(15,17,2),(16,17,3),(25,17,2),(8,18,10),(11,18,6),(15,18,3),(16,18,2),(24,20,4),(25,20,0),(25,24,8),(24,26,10),(25,28,3),(25,29,10),(24,38,6),(25,38,5),(24,43,5),(24,45,8);
 /*!40000 ALTER TABLE `team_has_player` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,10 +223,10 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `email` varchar(80) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -235,7 +235,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'ted','test','ted@test.nl'),(2,'bart','test','bart@test.nl'),(11,'quen','test','quen@test.nl'),(13,'test','testtest','test@test.nl');
+INSERT INTO `user` VALUES (1,'ted','$2a$10$ZOYS8YGc1U6XOMHB/Wj.9uEk3ydNaGXld037KFxD7gLU.Efy/Q0ei','ted@test.nl'),(2,'bart','$2a$10$ZOYS8YGc1U6XOMHB/Wj.9uEk3ydNaGXld037KFxD7gLU.Efy/Q0ei','bart@test.nl'),(11,'quen','$2a$10$ZOYS8YGc1U6XOMHB/Wj.9uEk3ydNaGXld037KFxD7gLU.Efy/Q0ei','quen@test.nl'),(13,'test','$2a$10$ZOYS8YGc1U6XOMHB/Wj.9uEk3ydNaGXld037KFxD7gLU.Efy/Q0ei','test@test.nl'),(25,'Jan','$2a$10$nr.dGDBAKotilVw1YQ4DG.ntrC3RkPltsvDhggJPoJzL9VIG7U8FW','jan@test.nl');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -248,4 +248,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-26 12:53:44
+-- Dump completed on 2015-01-26 15:40:00
