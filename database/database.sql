@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `notejs` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `notejs`;
+CREATE DATABASE  IF NOT EXISTS `dreamteam` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `dreamteam`;
 -- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
 --
--- Host: 127.0.0.1    Database: notejs
+-- Host: 127.0.0.1    Database: dreamteam
 -- ------------------------------------------------------
 -- Server version	5.6.21
 

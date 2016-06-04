@@ -49,7 +49,7 @@ var dbOptions = {
 	host: 'localhost',
 	user: 'root',
 	password: '',
-	database: 'notejs'
+	database: 'dreamteam'
 };
 
 // Add connection middleware
@@ -106,4 +106,4 @@ io.on("connection", function(socket){
   socket.on("disconnect", function(){
     //console.log("Disconnect")
   })
-})
+});
