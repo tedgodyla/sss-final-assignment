@@ -1,16 +1,12 @@
-# Server-side scripting in node.js -- Final Assignment Base Application
+# Dreamteam -- Server-side scripting in node.js -- Final Assignment
 
-This is the basic application with which you can create your final assignment.
+With this application you can create your own footbal dreamteam based on the Dutch footbal league (eredivisie).
+The application was made as the Final Assignment for the course Server-side scripting on the HvA.
 
 ## Included
 
-* Node.js basic application with all required dependencies (express-session, body-parser, multer, MySQL, express-myconnection, etc.)
-* Basic database (see `database/database.sql`).
+* Node.js application with all required dependencies (express-session, body-parser, multer, MySQL, express-myconnection, etc.)
+* Basic database `database/database.sql` and its EER diagram `database/database.mwb`.
 
-## Database
-The base database should be enough to create the bare minimum application required. The database includes 3 tables; users, photos and comments:
-
+## Database Model
 ![Datamodel](database/model.png?raw=true)
-
-## Session
-There is one minor difference between the excersises and this assignment in session handling. Sessions will not be removed when the application restarts. Delete the contents of the `sessions` directory to remove all sessions.
